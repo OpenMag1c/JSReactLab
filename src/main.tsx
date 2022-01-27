@@ -6,7 +6,7 @@ import ReactDom from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import Header from "@/components/header/header";
 import Pages from "@/components/pages";
-import Footer from "@/components/footer";
+import Footer from "@/components/footer/footer";
 
 interface AppProps {
   nothing: boolean;

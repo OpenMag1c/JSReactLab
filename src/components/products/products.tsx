@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "@/components/pages.css";
+import "@/components/pages/pages.css";
 
 interface ProductsProps {
   title: string;

@@ -16,8 +16,6 @@ interface AppState {
   title: string;
 }
 
-console.log("Hello");
-
 class AppContainer extends Component<AppProps, AppState> {
   ["constructor"]: typeof AppContainer;
 

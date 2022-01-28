@@ -1,14 +1,20 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "@/components/header/navbar";
+import NavBarLink from "@/components/header/navBarLink";
 import "./header.css";
+import "./navbar.css";
+import links from "@/components/header/links";
 
 const Header: FC = () => (
   <div className="header">
     <Link to="/" className="header__title">
       Magic Game Store
     </Link>
-    <NavBar />
+    <nav className="navbar">
+      {links.map((link) => (
+        <NavBarLink link={link} />
+      ))}
+    </nav>
   </div>
 );
 

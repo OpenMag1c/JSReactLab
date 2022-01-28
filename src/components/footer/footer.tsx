@@ -11,7 +11,7 @@ const Footer: FC = () => {
         Magic Game Store &copy;{dateNow} All Rights Reserved by
         <a href="/">OpenMXGIC</a>.
       </p>
-      <ul className="social-icons">
+      <ul className="sponsor-icons">
         {sponsors.map((sponsor) => (
           <SponsorLogo sponsor={sponsor} />
         ))}

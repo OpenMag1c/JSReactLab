@@ -12,7 +12,7 @@ export interface ISponsor {
 
 const sponsors: ISponsor[] = [
   { name: "ubisoft", url: "https://www.ubisoft.com/ru-ru/", logo: ubiLogo, description: "Ubisoft logo" },
-  { name: "eaGames", url: "https://www.ea.com/ru-ru", logo: cdProjLogo, description: "EA Games log" },
+  { name: "eaGames", url: "https://www.ea.com/ru-ru", logo: cdProjLogo, description: "EA Games logo" },
   { name: "rockStar", url: "https://www.rockstargames.com/ru/", logo: rockstarLogo, description: "RockStar logo" },
   { name: "steam", url: "https://store.steampowered.com/?l=russian", logo: steamLogo, description: "Steam logo" },
 ];

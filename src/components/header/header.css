@@ -5,13 +5,13 @@
   background-color: #26272b;
 }
 
-.header__title {
+.header-title {
   width: 30%;
   font-size: 200%;
   text-decoration: none;
   padding: 5px;
 }
 
-.header__title:hover {
+.header-title:hover {
   color: #c5e56e;
 }

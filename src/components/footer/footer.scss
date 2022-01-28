@@ -8,7 +8,7 @@
   align-content: center;
 }
 
-.sponsor-icons a {
+.sponsor-icons .sponsor-url {
   padding: 7px;
   background-color: #eceeef;
   color: #818a91;
@@ -24,16 +24,16 @@
   transition: all 0.2s linear;
 }
 
-.sponsor-icons a img {
+.sponsor-icons .sponsor-url .sponsor-img {
   width: 50px;
   height: 50px;
 }
 
-.site-footer a {
+.site-footer .sponsor-url {
   color: #737373;
 }
 
-.site-footer .sponsor-icons a {
+.site-footer .sponsor-icons .sponsor-url {
   width: 50px;
   height: 50px;
   line-height: 40px;
@@ -50,42 +50,28 @@
   align-items: center;
 }
 
-.sponsor-icons li {
+.sponsor-icons .sponsor-list {
   display: inline-block;
   margin-bottom: 4px;
 }
 
-.sponsor-icons li.title {
-  text-transform: uppercase;
-  color: #96a2b2;
-  font-weight: 700;
-  font-size: 13px;
-}
-
-.site-footer a:hover {
+.site-footer .sponsor-url:hover {
   color: #c5e56e;
   text-decoration: none;
 }
 
-.sponsor-icons.size-sm a {
-  line-height: 34px;
-  height: 34px;
-  width: 34px;
-  font-size: 14px;
-}
-
-.sponsor-icons a.ubisoft:hover {
+.sponsor-icons .sponsor-url.ubisoft:hover {
   background-color: #3b5998;
 }
 
-.sponsor-icons a.eaGames:hover {
+.sponsor-icons .sponsor-url.eaGames:hover {
   background-color: #00aced;
 }
 
-.sponsor-icons a.steam:hover {
+.sponsor-icons .sponsor-url.steam:hover {
   background-color: #007bb6;
 }
 
-.sponsor-icons a.rockStar:hover {
+.sponsor-icons .sponsor-url.rockStar:hover {
   background-color: #ea4c89;
 }

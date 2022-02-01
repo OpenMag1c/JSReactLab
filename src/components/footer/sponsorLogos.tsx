@@ -8,11 +8,15 @@ interface SponsorLogosProps {
 const SponsorLogos: FC<SponsorLogosProps> = ({ sponsors }) => (
   <ul className="sponsor-icons">
     {sponsors.map((sponsor) => (
-      <li className="sponsor-list">
-        <a className={`sponsor-url ${sponsor.name}`} href={sponsor.url} target="_blank" rel="noopener noreferrer">
-          <img className="sponsor-img" src={sponsor.logo} alt={sponsor.description} />
-        </a>
-      </li>
+      <a
+        key={sponsor.name}
+        className={`sponsor-url ${sponsor.name}`}
+        href={sponsor.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img className="sponsor-img" src={sponsor.logo} alt={sponsor.description} />
+      </a>
     ))}
   </ul>
 );

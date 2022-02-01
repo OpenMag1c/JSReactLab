@@ -3,10 +3,11 @@ import "./styles/main.scss";
 import { Component, StrictMode } from "react";
 import ReactDom from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "@/components/pages/home";
-import Products from "@/components/products/products";
-import About from "@/components/pages/about";
+import axios from "axios";
 import Layout from "@/components/layout";
+import Products from "@/pages/products";
+import Home from "@/pages/home";
+import About from "@/pages/about";
 
 interface AppProps {
   nothing: boolean;
@@ -29,6 +30,12 @@ class AppContainer extends Component<AppProps, IAppErrorState> {
 
   componentDidMount() {
     console.log(this.state.hasError);
+    setTimeout(() => {
+      axios.get(`http://localhost:8082/api/search/o`).then((res) => {
+        const someData = res.data;
+        console.log(someData);
+      });
+    }, 5000);
   }
 
   componentDidCatch() {
@@ -44,13 +51,13 @@ class AppContainer extends Component<AppProps, IAppErrorState> {
           <Layout>
             {!this.state.hasError ? (
               <Routes>
-                <Route path="/" element={<Home title="Home PAGE hello" />} />
-                <Route path="/products" element={<Products title="Products" />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="/about" element={<About title="About" />} />
-                <Route path="*" element={<Home title="Home PAGE hello" />} />
+                <Route path="*" element={<Home />} />
               </Routes>
             ) : (
-              <Home title="Home PAGE hello" />
+              <Home />
             )}
           </Layout>
         </BrowserRouter>

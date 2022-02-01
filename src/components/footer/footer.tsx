@@ -9,7 +9,7 @@ const Footer: FC = () => {
     <footer className="site-footer">
       <p className="copyright-text">
         Magic Game Store &copy;{dateNow} All Rights Reserved by
-        <a href="/">OpenMXGIC</a>.
+        <a className="footer-title" href="/">OpenMXGIC</a>.
       </p>
       <SponsorLogos sponsors={sponsors} />
     </footer>

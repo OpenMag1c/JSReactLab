@@ -1,14 +1,15 @@
 export interface ILink {
+  name: string;
   title: string;
   link: string;
 }
 
 const links: ILink[] = [
-  { title: "Home", link: "/" },
-  { title: "Products", link: "/products" },
-  { title: "About", link: "/about" },
-  { title: "Sign In", link: "/sign-in" },
-  { title: "Sign Up", link: "/sign-up" },
+  { name: "home", title: "Home", link: "/" },
+  { name: "products", title: "Products", link: "/products" },
+  { name: "about", title: "About", link: "/about" },
+  { name: "sign-in", title: "Sign In", link: "/sign-in" },
+  { name: "sign-up", title: "Sign Up", link: "/sign-up" },
 ];
 
 export default links;

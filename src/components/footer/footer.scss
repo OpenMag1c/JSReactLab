@@ -48,30 +48,32 @@
 .sponsor-icons {
   padding-right: 2vw;
   align-items: center;
-}
-
-.sponsor-icons .sponsor-list {
   display: inline-block;
   margin-bottom: 4px;
 }
 
-.site-footer .sponsor-url:hover {
+.footer-title:hover,
+.footer-title:focus {
   color: #c5e56e;
   text-decoration: none;
 }
 
-.sponsor-icons .sponsor-url.ubisoft:hover {
+.sponsor-url.ubisoft:hover,
+.sponsor-url.ubisoft:focus {
   background-color: #3b5998;
 }
 
-.sponsor-icons .sponsor-url.eaGames:hover {
+.sponsor-url.eaGames:hover,
+.sponsor-url.eaGames:focus {
   background-color: #00aced;
 }
 
-.sponsor-icons .sponsor-url.steam:hover {
+.sponsor-url.steam:hover,
+.sponsor-url.steam:focus {
   background-color: #007bb6;
 }
 
-.sponsor-icons .sponsor-url.rockStar:hover {
+.sponsor-url.rockStar:hover,
+.sponsor-url.rockStar:focus {
   background-color: #ea4c89;
 }

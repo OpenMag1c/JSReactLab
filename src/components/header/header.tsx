@@ -1,13 +1,12 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import NavBarLinks from "@/components/header/navBarLinks";
-import "./header.css";
-import "./navbar.css";
+import classes from "./header.module.scss";
 import links from "@/components/header/links";
 
 const Header: FC = () => (
-  <div className="header">
-    <Link to="/" className="header-title">
+  <div className={classes.header}>
+    <Link to="/" className={classes.header__title}>
       Magic Game Store
     </Link>
     <NavBarLinks links={links} />

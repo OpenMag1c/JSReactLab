@@ -10,7 +10,7 @@ export const productImages: IImages = {
   Skyrim: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Skyrim_b3rdpm.jpg",
   ClashRoyale: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Clash_Royale_oipsjp.jpg",
   BeatSaber: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Beat_Saber_ubvkuu.jpg",
-  Terraria: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Terraria_uzjoxt.jpg",
+  Terraria: "https://res.cloudinary.com/dvweto8rq/image/upload/v1643757568/WebAPI/Logo/maxresdefault_tgiogx.jpg",
   GenshinImpact: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Genshin_Impact_x0fd6d.jpg",
   Snake: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Snake_toiezu.jpg",
   ContraCity: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Contra_City_r3iefw.jpg",

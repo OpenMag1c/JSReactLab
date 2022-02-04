@@ -1,25 +1,102 @@
+.productItem-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 200px;
+  min-height: 100px;
+  height: 100%;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: 0.7s all ease;
+  position: relative;
+  backface-visibility: hidden;
+}
+
 .productItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  cursor: pointer;
-  border-bottom: 5px solid transparent;
+  border: 5px solid transparent;
   border-radius: 15px;
   color: #00aced;
-  max-width: 300px;
-  height: 200px;
   margin: 20px;
 
-  & img {
-    max-width: 200px;
+  &:hover {
+    border: 5px solid #00aced;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 2px 2px 5px #00aced, -2px -2px 5px #00aced;
+
+    .productItem-inner {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.productItem-category {
+  color: #212121;
+  background-color: #818a91;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  text-align: center;
+
+  &-image {
+    object-fit: cover;
+    max-height: 30px;
+  }
+}
+
+.back {
+  align-items: center;
+  position: absolute;
+  transform: rotateY(180deg);
+  padding: 10px;
+
+  & p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
   }
 
-  &:hover {
-    background: #818a91;
-    color: #212121;
-    border-bottom: 5px solid red;
+  &-button {
+    cursor: pointer;
+    border-radius: 10px;
+    color: #00aced;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 40px;
+    width: 40%;
+    height: 40px;
   }
+
+  &-button:hover {
+    box-shadow: 2px 2px 5px #00aced, -2px -2px 5px #00aced;
+  }
+}
+
+.front {
+  display: flex;
+  flex-direction: column;
+
+  & .product__image {
+    max-width: 250px;
+    min-height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
+.back,
+.front {
+  backface-visibility: hidden;
+}
+
+.title {
+  font-family: Brutal, sans-serif;
 }

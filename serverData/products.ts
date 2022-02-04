@@ -30,7 +30,7 @@ export const products: IProduct[] = [
     id: mockServerHelper.getUniqueIdInt(),
     name: "Counter Strike GO",
     rating: 7,
-    categoryId: categories.playstation.id,
+    categoryId: categories.pc.id,
     description:
       "The game pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based game modes. The most common game modes involve the Terrorists planting a bomb while Counter-Terrorists attempt to stop them, or Counter-Terrorists attempting to rescue hostages that the Terrorists have captured. There are nine official game modes, all of which have distinct characteristics specific to that mode. The game also has matchmaking support that allows players to play on dedicated Valve servers, in addition to community-hosted servers with custom maps and game modes.",
     price: "0",

@@ -1,0 +1,42 @@
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.right__menu {
+  position: relative;
+  height: 6vh;
+  float: right;
+}
+
+.dropdown__menu {
+  display: none;
+  position: absolute;
+  background-color: #26272b;
+  z-index: 1;
+}
+
+.dropdown__link {
+  padding: 15px;
+  text-decoration: none;
+
+  &:hover {
+    background: #818a91;
+    color: #212121;
+    border-bottom: 5px solid #00aced;
+  }
+}
+
+.right__menu:hover .dropdown__menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.right__menu:hover .menu-button {
+  background-color: #818a91;
+  color: #212121;
+}

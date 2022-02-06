@@ -5,6 +5,12 @@
   padding: 14px;
   cursor: pointer;
   text-decoration: none;
+
+  &__active {
+    background: #818a91;
+    color: #212121;
+    border-bottom: 5px solid #00aced;
+  }
 }
 
 .right__menu {
@@ -37,6 +43,7 @@
 }
 
 .right__menu:hover .menu-button {
+  border-bottom: 0;
   background-color: #818a91;
   color: #212121;
 }

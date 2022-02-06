@@ -6,7 +6,10 @@ import { categoryLinks } from "@/components/header/pageLinks";
 const DropDownMenu: FC = () => {
   return (
     <div className="right__menu">
-      <NavLink to="/products" className="menu-button">
+      <NavLink
+        to="/products"
+        className={({ isActive }) => (isActive ? `menu-button menu-button__active` : "menu-button")}
+      >
         Products
       </NavLink>
       <div className="dropdown__menu">

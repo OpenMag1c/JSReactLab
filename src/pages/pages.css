@@ -1,12 +1,13 @@
 .page {
   display: flex;
   flex-direction: column;
-  background: url(images/back3.jpg) no-repeat center center fixed;
+  background: url(https://psv4.userapi.com/c532036/u474384247/docs/d29/72af9848043c/9569841645fbed874149cd093896b26f8280bb62.gif?extra=gmqUahn4-iyjlJMLqLk1ZQyZJVRGKZ2KL9WJNln-bA-on8Qn2Dt0FEr70rWfnM5UVkybWt8yp5Ek9pQtleyYn5av-hw_NsFZPiX8NoP7xqfx7yajrBbLwDuoA_uvRckta6qakd5vRPHBJe0E6WVlighERLQ)
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 80vh;
+  min-height: 90vh;
   color: black;
   align-items: center;
 }

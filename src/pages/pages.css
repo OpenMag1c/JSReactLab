@@ -28,3 +28,13 @@
 .products {
   background-color: darkorange;
 }
+
+.no__products {
+  color: #00aced;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  font-size: 50px;
+}

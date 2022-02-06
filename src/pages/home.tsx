@@ -7,8 +7,8 @@ import { getCategories, getProducts } from "@/api/api";
 import CategoryItem from "@/components/categoryItem/categoryItem";
 import ICategory from "../../serverData/categories";
 import IProduct from "../../serverData/products";
-import ProductItem from "@/components/productItem/productItem";
 import Spinner from "@/components/elements/spinner/spinner";
+import ProductList from "@/components/productList/productList";
 
 const Home: FC = () => {
   const navigate = useNavigate();
@@ -21,7 +21,8 @@ const Home: FC = () => {
   // };
 
   const navigateToCategory = useCallback((category: ICategory) => {
-    navigate(`/products/${category.name}`);
+    setSpinner(true);
+    setTimeout(() => navigate(`/products/${category.name}`), 1000);
   }, []);
 
   const onSearch = (response: IProduct[]): void => {
@@ -47,7 +48,7 @@ const Home: FC = () => {
         ))}
       </BlockOfElements>
       <BlockOfElements title="Top products">
-        {spinner ? <Spinner /> : products.map((product) => <ProductItem product={product} key={product.id} />)}
+        {spinner ? <Spinner /> : <ProductList products={products} />}
       </BlockOfElements>
     </div>
   );

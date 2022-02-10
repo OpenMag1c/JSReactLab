@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import classes from "./pages.module.scss";
-import SearchBar from "@/components/elements/search/search";
 import Block from "@/components/elements/block/block";
 import { getCategories, getProducts } from "@/api/api";
 import Category from "@/components/category/category";
@@ -8,6 +7,7 @@ import Spinner from "@/components/elements/spinner/spinner";
 import ProductList from "@/components/productList/productList";
 import ICategory from "@/types/ICategory";
 import IProduct from "@/types/IProduct";
+import Search from "@/components/elements/search/search";
 
 const Home: FC = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -15,8 +15,8 @@ const Home: FC = () => {
   const [newProducts, setNewProducts] = useState<IProduct[]>([]);
   const [spinner, setSpinner] = useState(true);
 
-  const onSearch = (response: IProduct[]): void => {
-    setProducts(response);
+  const onSearch = (response: IProduct[] | null): void => {
+    setProducts(response || newProducts);
     setSpinner(false);
   };
 
@@ -34,7 +34,7 @@ const Home: FC = () => {
 
   return (
     <div className={`${classes.page} ${classes.home}`}>
-      <SearchBar onSearch={onSearch} onEmpty={newProducts} placeholder="Search" loader={setSpinner} />
+      <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} />
       <Block title="Categories">
         {categories.map((category) => (
           <Category category={category} key={category.id} />

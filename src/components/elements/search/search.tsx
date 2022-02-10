@@ -6,21 +6,18 @@ import { debounce } from "@/api/utils";
 import IProduct from "@/types/IProduct";
 
 interface SearchProps {
-  onSearch: (response: IProduct[]) => void;
-  onEmpty: IProduct[];
+  onSearch: (response: IProduct[] | null) => void;
   loader: (isActive: boolean) => void;
   placeholder: string;
 }
 
 type reactEventProp = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
-const Search: FC<SearchProps> = ({ onSearch, loader, placeholder, onEmpty }) => {
+const Search: FC<SearchProps> = ({ onSearch, loader, placeholder }) => {
   const makeResponse = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const search: string = event.target.value;
-    const response = search ? await getProducts({ name: event.target.value }) : onEmpty;
-    if (onSearch) {
-      onSearch(response);
-    }
+    const response = search ? await getProducts({ name: event.target.value }) : null;
+    onSearch(response);
   };
 
   const debouncedOnChange: reactEventProp = debounce(makeResponse, 1000);

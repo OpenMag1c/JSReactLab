@@ -1,6 +1,7 @@
 import { FC } from "react";
-import IProduct from "../../../serverData/products";
-import ProductItem from "@/components/productItem/productItem";
+import Product from "@/components/product/product";
+import IProduct from "@/types/IProduct";
+import classes from "./productList.module.scss";
 
 interface ProductListProps {
   products: IProduct[];
@@ -9,9 +10,9 @@ interface ProductListProps {
 const ProductList: FC<ProductListProps> = ({ products }) => (
   <>
     {products.length !== 0 ? (
-      products.map((product) => <ProductItem product={product} key={product.id} />)
+      products.map((product) => <Product product={product} key={product.id} />)
     ) : (
-      <div className="no__products">Products not found(</div>
+      <div className={classes.no__product}>Products not found(</div>
     )}
   </>
 );

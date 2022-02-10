@@ -1,4 +1,6 @@
-.productItem-inner {
+@import "../../styles/variables";
+
+.product__inner {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -12,28 +14,28 @@
   backface-visibility: hidden;
 }
 
-.productItem {
+.product {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   border: 5px solid transparent;
   border-radius: 15px;
-  color: #00aced;
+  color: $neonColor;
   margin: 20px;
 
   &:hover {
-    border: 5px solid #00aced;
+    border: 5px solid $neonColor;
     background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 2px 2px 5px #00aced, -2px -2px 5px #00aced;
+    box-shadow: $neonShadow;
 
-    .productItem-inner {
+    .product__inner {
       transform: rotateY(180deg);
     }
   }
 }
 
-.productItem-category {
+.product__category {
   color: #212121;
   background-color: #818a91;
   position: absolute;
@@ -42,7 +44,7 @@
   border-radius: 10px;
   text-align: center;
 
-  &-image {
+  &__image {
     object-fit: cover;
     max-height: 30px;
   }
@@ -62,10 +64,10 @@
     -webkit-box-orient: vertical;
   }
 
-  &-button {
+  &__button {
     cursor: pointer;
     border-radius: 10px;
-    color: #00aced;
+    color: $neonColor;
     background-color: rgba(0, 0, 0, 0.5);
     position: relative;
     left: 50%;
@@ -73,10 +75,10 @@
     margin-top: 40px;
     width: 40%;
     height: 40px;
-  }
 
-  &-button:hover {
-    box-shadow: 2px 2px 5px #00aced, -2px -2px 5px #00aced;
+    &:hover {
+      box-shadow: $neonShadow;
+    }
   }
 }
 

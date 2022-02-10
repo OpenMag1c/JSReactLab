@@ -6,10 +6,13 @@
 }
 
 .header__title {
+  display: flex;
+  height: 100%;
+  align-items: center;
   width: 30%;
   font-size: 150%;
   text-decoration: none;
-  padding: 10px;
+  padding-left: 1%;
 
   &:hover {
     color: #00aced;

@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import webpackMockServer from "webpack-mock-server";
-import IProduct, { products } from "./serverData/products";
-import { categories } from "./serverData/categories";
+import IProduct from "@/types/IProduct";
+import categories from "./serverData/categories";
+import products from "./serverData/products";
 
 export default webpackMockServer.add((app, helper) => {
   app.get("/testMock", (_req, res) => {
@@ -20,13 +21,9 @@ export default webpackMockServer.add((app, helper) => {
     let productsList = [...products];
 
     if (_req.query.sortBy) {
-      const asc = _req.query.ascending;
-
-      productsList = productsList.sort((a, b) => {
-        const sortBy = ((_req.query.sortBy as string) in a ? _req.query.sortBy : "date") as keyof IProduct;
-        const result = a[sortBy] > b[sortBy] ? -1 : 1;
-        return asc ? -result : result;
-      });
+      const { sortBy: filter } = _req.query;
+      const sortByKey = (a: IProduct, b: IProduct, key: keyof IProduct = "name") => (a[key] < b[key] ? 1 : -1);
+      productsList = productsList.sort((a, b) => sortByKey(a, b, filter as keyof IProduct));
     }
 
     if (_req.query.name) {

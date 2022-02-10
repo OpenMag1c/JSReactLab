@@ -1,60 +1,45 @@
 import { FC, useEffect, useState } from "react";
-import "@/pages/pages.css";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import SearchBar from "@/components/elements/searchBar/searchBar";
-import IProduct from "../../serverData/products";
+import { useParams } from "react-router-dom";
+import classes from "@/pages/pages.module.scss";
+import SearchBar from "@/components/elements/search/search";
 import { getProducts } from "@/api/api";
 import Spinner from "@/components/elements/spinner/spinner";
-import BlockOfElements from "@/components/elements/blockOfElements/blockOfElements";
-import { categories } from "../../serverData/categories";
+import Block from "@/components/elements/block/block";
 import ProductList from "@/components/productList/productList";
+import IProduct from "@/types/IProduct";
 
 type ProductsUrlParams = {
   category?: string;
 };
 
-interface ProductsProps {}
-
-const Products: FC<ProductsProps> = () => {
-  const navigate = useNavigate();
-  const { state } = useLocation();
+const Products: FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [allProducts, setAllProducts] = useState<IProduct[]>([]);
   const { category } = useParams<ProductsUrlParams>();
-  const [spinner, setSpinner] = useState(false);
+  const [spinner, setSpinner] = useState(true);
 
   const onSearch = (response: IProduct[]): void => {
     setProducts(response);
     setSpinner(false);
   };
 
-  console.log(category);
-
-  if (state) {
-    setProducts(state as IProduct[]);
-  } else {
-    useEffect(() => {
-      if (category && !((category as string) in categories)) {
-        navigate("/products");
+  useEffect(() => {
+    (async () => {
+      const prods = await getProducts();
+      setAllProducts(prods);
+      if (category) {
+        setProducts(await getProducts({ category }));
       } else {
-        (async () => {
-          if (category) {
-            setProducts(await getProducts({ category }));
-          } else {
-            setProducts(await getProducts());
-          }
-        })();
+        setProducts(prods);
       }
-    }, [category]);
-  }
-
-  console.log(`responseProducts ${state}`);
+      setSpinner(false);
+    })();
+  }, [category]);
 
   return (
-    <div className="page products">
-      <SearchBar onSearch={onSearch} placeholder="Search" loader={setSpinner} />
-      <BlockOfElements title="Products">
-        {spinner ? <Spinner /> : <ProductList products={products} /> }
-      </BlockOfElements>
+    <div className={`${classes.page} ${classes.products}`}>
+      <SearchBar onSearch={onSearch} onEmpty={allProducts} placeholder="Search" loader={setSpinner} />
+      <Block title="Products">{spinner ? <Spinner /> : <ProductList products={products} />}</Block>
     </div>
   );
 };

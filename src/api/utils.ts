@@ -1,26 +1,22 @@
-const transformParams = (props: { [key: string]: string | number }): string => {
+const getUrlParams = (props: { [key: string]: string | number }): string => {
   const keys = Object.keys(props);
-  let result = "";
-
-  if (keys.length) {
-    const transformedParams = keys.map((key: string) => `${key}=${props[key]}`).join("&");
-    result = `?${transformedParams}`;
-  }
-
-  return result;
+  const result = new URLSearchParams();
+  keys.forEach((key: string) => result.append(key, props[key] as string));
+  return `?${result.toString()}`;
 };
 
-export const debounce = <T>(callback: (...args: T[]) => void, delay = 300): ((...args: T[]) => void) => {
-  let timerId: ReturnType<typeof setTimeout>;
+type debounceFunc = <T>(func: (...args: T[]) => void, delay: number) => (...args: T[]) => void;
 
-  return (...args: T[]) => {
-    if (timerId) clearTimeout(timerId);
-
-    timerId = setTimeout(() => {
-      callback(...args);
-      clearTimeout(timerId);
+export const debounce: debounceFunc = (func, delay) => {
+  let timer: ReturnType<typeof setTimeout>;
+  return (...args) => {
+    const callFunc = () => func.apply(this, args);
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      clearTimeout(timer);
+      callFunc();
     }, delay);
   };
 };
 
-export default transformParams;
+export default getUrlParams;

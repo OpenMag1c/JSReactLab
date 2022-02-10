@@ -1,8 +1,9 @@
-.menu-button {
+.menu__button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px;
+  height: 100%;
+  padding: 0 15px 0 15px;
   cursor: pointer;
   text-decoration: none;
 
@@ -13,20 +14,20 @@
   }
 }
 
-.right__menu {
+.main__menu {
   position: relative;
   height: 6vh;
   float: right;
 }
 
-.dropdown__menu {
+.drop__menu {
   display: none;
   position: absolute;
   background-color: #26272b;
   z-index: 1;
 }
 
-.dropdown__link {
+.drop__link {
   padding: 15px;
   text-decoration: none;
 
@@ -37,12 +38,12 @@
   }
 }
 
-.right__menu:hover .dropdown__menu {
+.main__menu:hover .drop__menu {
   display: flex;
   flex-direction: column;
 }
 
-.right__menu:hover .menu-button {
+.main__menu:hover .menu__button {
   border-bottom: 0;
   background-color: #818a91;
   color: #212121;

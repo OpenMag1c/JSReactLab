@@ -1,7 +1,7 @@
-import ICategory from "../../serverData/categories";
-import IProduct from "../../serverData/products";
 import api from "@/environment/api";
-import transformParams from "@/api/utils";
+import ICategory from "@/types/ICategory";
+import IProduct from "@/types/IProduct";
+import getUrlParams from "@/api/utils";
 
 interface IParams {
   [key: string]: string | number;
@@ -13,7 +13,7 @@ export const getCategories = async (): Promise<ICategory[]> => {
 };
 
 export const getProducts = async (params: IParams = {}): Promise<IProduct[]> => {
-  const data = await fetch(`${api.products}${transformParams(params)}`);
+  const data = await fetch(`${api.products}${getUrlParams(params)}`);
   return data.json();
 };
 

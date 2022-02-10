@@ -1,12 +1,13 @@
-.search-inputs {
+.search__inputs {
   width: 31vw;
   margin-top: 5px;
   display: flex;
+  justify-content: space-between;
   border-radius: 20px;
   background-color: #26272b;
 }
 
-.search-input-element {
+.search__input__element {
   background-color: #26272b;
   color: #818a91;
   border: 0;
@@ -15,16 +16,16 @@
   padding: 15px;
   height: 20px;
   width: 500px;
+
+  &:hover,
+  &:focus {
+    color: #26272b;
+    background-color: #818a91;
+    outline: none;
+  }
 }
 
-.search-input-element:hover,
-.search-input-element:focus {
-  color: #26272b;
-  background-color: #818a91;
-  outline: none;
-}
-
-.search-icon {
+.search__icon {
   background-color: transparent;
   height: 50px;
   width: 50px;
@@ -33,10 +34,11 @@
   display: grid;
   place-items: center;
   font-size: 35px;
-}
 
-.search-icon-img {
-  pointer-events: none;
-  height: 20px;
-  width: 20px;
+  &__img {
+    pointer-events: none;
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
 }

@@ -4,12 +4,12 @@ import Navbar from "@/components/navbar/navbar";
 import classes from "./header.module.scss";
 
 const Header: FC = () => (
-  <div className={classes.header}>
+  <header className={classes.header}>
     <Link to="/" className={classes.header__title}>
       Magic Game Store
     </Link>
     <Navbar />
-  </div>
+  </header>
 );
 
 export default Header;

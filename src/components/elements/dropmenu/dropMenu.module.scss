@@ -1,23 +1,18 @@
-.menu__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0 15px 0 15px;
-  cursor: pointer;
-  text-decoration: none;
-
-  &__active {
-    background: #818a91;
-    color: #212121;
-    border-bottom: 5px solid #00aced;
-  }
-}
-
 .main__menu {
+  list-style-type: none;
   position: relative;
   height: 6vh;
   float: right;
+
+  & .navbar__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 15px 0 15px;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
 
 .drop__menu {

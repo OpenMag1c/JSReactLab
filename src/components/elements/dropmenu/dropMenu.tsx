@@ -1,26 +1,23 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./dropMenu.module.scss";
-import { categoryLinks } from "@/environment/pageLinks";
+import { categoryLinks, ILink } from "@/environment/pageLinks";
+import NavbarItem from "@/components/navbar/navbarItem";
 
-const DropMenu: FC = () => (
-  <div className={classes.main__menu}>
-    <NavLink
-      to="/products"
-      className={({ isActive }) =>
-        isActive ? `${classes.menu__button} ${classes.menu__button__active}` : classes.menu__button
-      }
-    >
-      Products
-    </NavLink>
+interface DropMenuProps {
+  link: ILink;
+}
+
+const DropMenu: FC<DropMenuProps> = ({ link }) => (
+  <NavbarItem link={link} className={classes.main__menu}>
     <div className={classes.drop__menu}>
-      {categoryLinks.map((link) => (
-        <NavLink to={link.link} className={classes.drop__link} key={link.name}>
-          {link.title}
+      {categoryLinks.map((category) => (
+        <NavLink to={category.link} className={classes.drop__link} key={category.name}>
+          {category.title}
         </NavLink>
       ))}
     </div>
-  </div>
+  </NavbarItem>
 );
 
 export default DropMenu;

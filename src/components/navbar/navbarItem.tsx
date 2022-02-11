@@ -13,7 +13,7 @@ const NavbarItem: FC<NavbarItemProps> = ({ link, className, children }) => {
     isActive ? `${classes.navbar__link} ${classes.active}` : classes.navbar__link;
   return (
     <li className={className}>
-      <NavLink to={link.link} className={checkActive} key={link.name}>
+      <NavLink to={link.link} className={checkActive}>
         {link.title}
       </NavLink>
       {children}

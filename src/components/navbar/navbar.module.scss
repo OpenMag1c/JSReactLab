@@ -1,0 +1,38 @@
+.navbar {
+  width: 85%;
+
+  & .navbar__link {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    padding: 0 15px 0 15px;
+    text-decoration: none;
+  }
+}
+
+.navbar__list {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  height: 100%;
+}
+
+.navbar__item {
+  list-style-type: none;
+  display: inline;
+  float: left;
+  height: 100%;
+}
+
+.active {
+  background: #818a91;
+  color: #212121;
+  border-bottom: 5px solid #00aced;
+}
+
+.navbar__link:hover,
+.navbar__link:focus {
+  background: #818a91;
+  color: #212121;
+  border-bottom: 5px solid #00aced;
+}

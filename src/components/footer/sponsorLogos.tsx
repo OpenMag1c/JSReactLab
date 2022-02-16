@@ -1,18 +1,23 @@
 import { FC } from "react";
 import { ISponsor } from "@/components/footer/footerSources";
+import classes from "./footer.module.scss";
 
 interface SponsorLogosProps {
   sponsors: ISponsor[];
 }
 
 const SponsorLogos: FC<SponsorLogosProps> = ({ sponsors }) => (
-  <ul className="sponsor-icons">
+  <ul className={classes.sponsor__icons}>
     {sponsors.map((sponsor) => (
-      <li className="sponsor-list">
-        <a className={`sponsor-url ${sponsor.name}`} href={sponsor.url} target="_blank" rel="noopener noreferrer">
-          <img className="sponsor-img" src={sponsor.logo} alt={sponsor.description} />
-        </a>
-      </li>
+      <a
+        key={sponsor.name}
+        className={classes.sponsor__link}
+        href={sponsor.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img className={classes.sponsor__img} src={sponsor.logo} alt={sponsor.description} />
+      </a>
     ))}
   </ul>
 );

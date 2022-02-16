@@ -1,0 +1,24 @@
+.block {
+  display: flex;
+  align-items: center;
+  padding: 1px 40px;
+  border-radius: 30px;
+  width: 1038px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.block-title {
+  background-color: rgba(0, 0, 0, 0.8);
+  font-style: italic;
+  font-weight: normal;
+  min-height: 25px;
+  color: #818a91;
+  border-radius: 0 20px 0 20px;
+  border-bottom: 4px solid #00aced;
+  box-shadow: 1px 1px 5px #00aced;
+  font-size: 20px;
+  width: 60%;
+  margin-top: 10px;
+  padding-left: 15px;
+}

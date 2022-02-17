@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FC } from "react";
 import Navbar from "@/components/navbar/navbar";
 import classes from "./header.module.scss";
@@ -35,11 +35,17 @@ const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen, setAuth, isAut
       <Navbar checkAuth={checkAuth} />
       {isAuth ? (
         <>
-          <button type="button">
-            <Link to={Links.user}>{userName || "User Name"}</Link>
-          </button>
-          <button type="button" onClick={logout}>
-            <i className="fa-solid fa-arrow-right-from-bracket" />
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? `${classes.header__link} ${classes.active}` : classes.header__link
+            }
+            to={Links.user}
+          >
+            <i className="fa-solid fa-user fa-lg icProfile" />
+            {userName || "User Name"}
+          </NavLink>
+          <button type="button" className={classes.header__logout} onClick={logout}>
+            <i className="fa-solid fa-arrow-right-from-bracket fa-xl" />
           </button>
         </>
       ) : (

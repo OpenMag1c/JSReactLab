@@ -14,7 +14,52 @@
   text-decoration: none;
   padding-left: 10px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #00aced;
   }
+}
+
+.header__link {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: 0.5s all;
+  padding: 0 15px 0 15px;
+  font-size: 85%;
+
+  &:focus {
+    color: #00aced;
+    border-bottom: 3px solid #00aced;
+  }
+
+  &:hover {
+    background-color: #818a91;
+    color: #212121;
+  }
+}
+
+.header__logout {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0 15px 0 15px;
+  justify-content: center;
+  align-items: center;
+  color: #818a91;
+  cursor: pointer;
+  transition: 0.5s all;
+
+  &:hover,
+  &:focus {
+    color: #212121;
+    background-color: #818a91;
+  }
+}
+
+.active {
+  color: #00aced;
+  border-bottom: 3px solid #00aced;
 }

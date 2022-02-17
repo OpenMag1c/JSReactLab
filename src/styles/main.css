@@ -17,6 +17,14 @@ main {
   margin: 5px;
 }
 
+.icArrow {
+  margin-left: 5px;
+}
+
+.icProfile {
+  margin-right: 5px;
+}
+
 a {
   color: #737373;
 }

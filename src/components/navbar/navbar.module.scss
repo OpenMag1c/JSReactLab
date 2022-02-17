@@ -9,7 +9,13 @@
     text-decoration: none;
     padding: 0 15px 0 15px;
 
+    &:focus {
+      color: #00aced;
+      border-bottom: 3px solid #00aced;
+    }
+
     &:hover {
+      background: #818a91;
       color: #212121;
     }
   }

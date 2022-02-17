@@ -12,7 +12,7 @@ const DropMenu: FC<DropMenuProps> = ({ link }) => (
   <li className={classes.main__menu}>
     <NavLink to={link.link} className={checkActive}>
       {link.title}
-      <i className="fa-solid fa-caret-down icon" />
+      <i className="fa-solid fa-caret-down icArrow" />
     </NavLink>
     <div className={classes.drop__menu}>
       {categoryLinks.map((category) => (

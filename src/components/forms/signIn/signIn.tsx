@@ -30,7 +30,7 @@ const SignIn: FC<SignInProps> = ({ setAuth, setActive }) => {
     if (response) {
       setAuth({ isAuth: response, name: data.login });
       const state = location.state as { from: Location };
-      const page = state.from?.pathname || "/";
+      const page = state?.from?.pathname || "/";
       navigate(page, { replace: true });
       setActive(false);
     } else {

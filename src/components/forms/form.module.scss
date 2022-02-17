@@ -1,0 +1,35 @@
+@import "../styles/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: 0 0 20px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid $neonColor;
+  }
+}
+
+.form__submit {
+  align-self: center;
+  background-color: transparent;
+  outline: none;
+  border-color: #737373;
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 20px;
+  transition: 0.5s;
+
+  &:valid {
+    border-color: $neonColor;
+    color: $neonColor;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      box-shadow: $neonShadow;
+    }
+  }
+}

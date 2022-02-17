@@ -3,6 +3,7 @@ import webpackMockServer from "webpack-mock-server";
 import IProduct from "@/types/IProduct";
 import categories from "./serverData/categories";
 import products from "./serverData/products";
+import users from "./serverData/users";
 
 export default webpackMockServer.add((app, helper) => {
   app.get("/testMock", (_req, res) => {
@@ -55,5 +56,20 @@ export default webpackMockServer.add((app, helper) => {
   });
   app.get("/api/categories", (_req, res) => {
     res.json(Object.values(categories));
+  });
+
+  app.post("/api/auth/signIn/", (req, res) => {
+    const { login, password } = JSON.parse(req.body);
+    const user = users.find((u) => u.login === login && u.password === password);
+    res.json(!!user);
+  });
+
+  app.put("/api/auth/signUp/", (req, res) => {
+    const { login, password } = JSON.parse(req.body);
+    if (login && password) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
   });
 });

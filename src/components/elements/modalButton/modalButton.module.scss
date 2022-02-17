@@ -1,0 +1,28 @@
+.modelButton {
+  transition: 0.5s all;
+  box-sizing: border-box;
+
+  &:hover,
+  &:focus {
+    background: #818a91;
+  }
+}
+
+.modelButton__button {
+  color: #737373;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0 15px 0 15px;
+  cursor: pointer;
+  background: none;
+  font-size: unset;
+
+  &:hover {
+    color: #26272b;
+  }
+}

@@ -1,17 +1,21 @@
 import { FC } from "react";
-import pageLinks from "@/environment/pageLinks";
+import pageLinks, { Links } from "@/environment/pageLinks";
 import classes from "./navbar.module.scss";
 import DropMenu from "@/components/elements/dropmenu/dropMenu";
 import NavbarItem from "@/components/navbar/navbarItem";
 
-const Navbar: FC = () => (
-  <nav className={classes.navbar}>
+interface NavbarProps {
+  checkAuth: () => void;
+}
+
+const Navbar: FC<NavbarProps> = ({ checkAuth }) => (
+  <nav className={classes.navbar} onClick={checkAuth} onKeyDown={checkAuth}>
     <ul className={classes.navbar__list}>
       {pageLinks.map((link) =>
-        link.name === "products" ? (
-          <DropMenu link={link} />
+        link.link === Links.products ? (
+          <DropMenu link={link} key={link.link} />
         ) : (
-          <NavbarItem link={link} className={classes.navbar__item} />
+          <NavbarItem link={link} className={classes.navbar__item} key={link.link} />
         )
       )}
     </ul>

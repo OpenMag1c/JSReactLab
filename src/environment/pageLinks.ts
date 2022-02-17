@@ -1,7 +1,15 @@
+export enum Links {
+  home = "/",
+  products = "/products",
+  about = "/about",
+  user = "/user",
+  signIn = "/",
+  signUp = "/",
+}
+
 export interface ILink {
-  name: string;
   title: string;
-  link: string;
+  link: Links;
 }
 
 export interface ICategoryLink {
@@ -11,11 +19,9 @@ export interface ICategoryLink {
 }
 
 const pageLinks: ILink[] = [
-  { name: "home", title: "Home", link: "/" },
-  { name: "products", title: "Products", link: "/products" },
-  { name: "about", title: "About", link: "/about" },
-  { name: "sign-in", title: "Sign In", link: "/sign-in" },
-  { name: "sign-up", title: "Sign Up", link: "/sign-up" },
+  { title: "Home", link: Links.home },
+  { title: "Products", link: Links.products },
+  { title: "About", link: Links.about },
 ];
 
 export const categoryLinks: ICategoryLink[] = [

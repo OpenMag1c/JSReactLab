@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import classes from "./pages.module.scss";
+import classes from "../pages.module.scss";
 import Block from "@/components/elements/block/block";
 import { getCategories, getProducts } from "@/api/api";
 import Category from "@/components/category/category";
@@ -33,7 +33,7 @@ const Home: FC = () => {
   }, []);
 
   return (
-    <div className={`${classes.page} ${classes.home}`}>
+    <div className={classes.home}>
       <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} />
       <Block title="Categories">
         {categories.map((category) => (

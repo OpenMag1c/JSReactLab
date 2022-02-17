@@ -1,33 +1,11 @@
-.page {
+.home {
   display: flex;
   flex-direction: column;
-  background: url(https://cloclo1.cloud.mail.ru/weblink/view/LpA9/Ehm9QznFf) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  min-height: 90vh;
-  color: black;
   align-items: center;
 }
 
-.about {
-  color: #818a91;
-
-  &__inner {
-    margin-top: 30px;
-    padding: 10px;
-    font-size: 30px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50px;
-    min-height: 60vh;
-  }
-}
-
-.home {
-  background-color: #343148;
-}
-
 .products {
-  background-color: darkorange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

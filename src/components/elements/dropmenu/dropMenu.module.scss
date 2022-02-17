@@ -3,20 +3,16 @@
   position: relative;
   height: 6vh;
   float: right;
+  transition: 0.5s all;
 
-  & .navbar__link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 0 15px 0 15px;
-    cursor: pointer;
-    text-decoration: none;
+  &:hover {
+    background: #818a91;
   }
 }
 
 .drop__menu {
   display: none;
+  width: 100%;
   position: absolute;
   background-color: #26272b;
   z-index: 1;
@@ -25,21 +21,17 @@
 .drop__link {
   padding: 15px;
   text-decoration: none;
+  transition: 0.5s all;
+  color: #818a91;
 
   &:hover {
     background: #818a91;
     color: #212121;
-    border-bottom: 5px solid #00aced;
+    border-left: 5px solid #00aced;
   }
 }
 
 .main__menu:hover .drop__menu {
   display: flex;
   flex-direction: column;
-}
-
-.main__menu:hover .menu__button {
-  border-bottom: 0;
-  background-color: #818a91;
-  color: #212121;
 }

@@ -20,7 +20,7 @@ const SignIn: FC<SignInProps> = ({ setAuth, setActive }) => {
     handleSubmit,
     reset,
   } = useForm<IUser>({
-    mode: "onBlur",
+    mode: "onChange",
   });
   const navigate = useNavigate();
   const location = useLocation();

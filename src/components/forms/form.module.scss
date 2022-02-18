@@ -15,11 +15,12 @@
   align-self: center;
   background-color: transparent;
   outline: none;
-  border-color: #737373;
+  border-color: $backColor;
+  color: $backColor;
   width: 50%;
   height: 40px;
   border-radius: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
   transition: 0.5s;
 
   &:valid {

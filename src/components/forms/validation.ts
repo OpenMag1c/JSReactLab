@@ -27,7 +27,7 @@ export const passwordValidation: RegisterOptions = {
     message: "Should be less than 20 symbols",
   },
   pattern: {
-    value: /(?=.*[0-9])^[a-zA-Z](.[a-zA-Z0-9_-]*)$/,
-    message: "Not valid password!",
+    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}$/,
+    message: `Password should contain at least one numeric digit, one uppercase and one lowercase letter!`,
   },
 };

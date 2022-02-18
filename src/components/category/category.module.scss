@@ -18,12 +18,15 @@
   border-bottom: 5px solid transparent;
   border-radius: 15px;
   color: $neonColor;
+  font-size: 15px;
+  transition: 0.5s all;
 
   & img {
     max-width: 120px;
   }
 
   &:hover {
+    transition: 0.5s all;
     background: $backColor;
     color: #212121;
     border-bottom: 5px solid $neonColor;

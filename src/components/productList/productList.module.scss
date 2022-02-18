@@ -1,9 +1,16 @@
 .no__product {
+  display: flex;
+  flex-direction: column;
   color: #818a91;
   padding: 10px;
-  margin-top: 50px;
+  margin: 50px 0;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   height: 100%;
-  font-size: 50px;
+  font-size: 40px;
+
+  &__image {
+    width: 50%;
+    align-self: center;
+  }
 }

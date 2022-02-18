@@ -1,0 +1,37 @@
+.about {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #818a91;
+
+  &__inner {
+    margin-top: 30px;
+    padding: 30px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    min-height: 60vh;
+    width: 70%;
+    text-indent: 3ch;
+  }
+
+  &__title {
+    font-size: 30px;
+    color: #00aced;
+    border-bottom: 2px solid #00aced;
+  }
+}
+
+.about__image {
+  min-width: 200px;
+  width: 20%;
+  align-self: flex-end;
+}
+
+.about__thx {
+  display: flex;
+  align-items: flex-end;
+  font-style: italic;
+}

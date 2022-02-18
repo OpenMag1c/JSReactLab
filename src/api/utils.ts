@@ -8,13 +8,12 @@ const getUrlParams = (props: { [key: string]: string | number }): string => {
 type debounceFunc = <T>(func: (...args: T[]) => void, delay: number) => (...args: T[]) => void;
 
 export const debounce: debounceFunc = (func, delay) => {
-  let timer: ReturnType<typeof setTimeout>;
+  let timerId: ReturnType<typeof setTimeout>;
   return (...args) => {
-    const callFunc = () => func.apply(this, args);
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      clearTimeout(timer);
-      callFunc();
+    if (timerId) clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func(...args);
+      clearTimeout(timerId);
     }, delay);
   };
 };

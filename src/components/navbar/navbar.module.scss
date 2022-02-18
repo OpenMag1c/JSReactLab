@@ -1,12 +1,23 @@
 .navbar {
-  width: 85%;
+  margin-left: auto;
 
   & .navbar__link {
-    align-items: center;
     display: flex;
+    align-items: center;
     height: 100%;
-    padding: 0 15px 0 15px;
+    box-sizing: border-box;
     text-decoration: none;
+    padding: 0 15px 0 15px;
+
+    &:focus {
+      color: #00aced;
+      border-bottom: 3px solid #00aced;
+    }
+
+    &:hover {
+      background: #818a91;
+      color: #212121;
+    }
   }
 }
 
@@ -19,20 +30,20 @@
 
 .navbar__item {
   list-style-type: none;
-  display: inline;
-  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   height: 100%;
+  transition: 0.5s all;
+  box-sizing: border-box;
+
+  &:hover,
+  &:focus {
+    background: #818a91;
+  }
 }
 
 .active {
-  background: #818a91;
-  color: #212121;
-  border-bottom: 5px solid #00aced;
-}
-
-.navbar__link:hover,
-.navbar__link:focus {
-  background: #818a91;
-  color: #212121;
-  border-bottom: 5px solid #00aced;
+  color: #00aced;
+  border-bottom: 3px solid #00aced;
 }

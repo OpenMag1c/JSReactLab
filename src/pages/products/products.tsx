@@ -37,7 +37,7 @@ const Products: FC = () => {
   }, [category]);
 
   return (
-    <div className={`${classes.page} ${classes.products}`}>
+    <div className={classes.products}>
       <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} />
       <Block title="Products">{spinner ? <Spinner /> : <ProductList products={products} />}</Block>
     </div>

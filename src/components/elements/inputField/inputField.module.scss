@@ -1,0 +1,34 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  text-indent: 10px;
+  max-width: 320px;
+
+  &__field {
+    margin: 5px 0;
+    min-width: 300px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    border-color: $neonColor;
+    background-color: transparent;
+    color: #737373;
+    transition: 0.5s all;
+
+    &:hover,
+    &:focus {
+      color: #26272b;
+      background-color: #818a91;
+      outline: none;
+    }
+  }
+
+  &__error {
+    height: 30px;
+    font-size: 90%;
+  }
+}
+
+.icon {
+  padding-right: 5px;
+}

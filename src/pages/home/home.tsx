@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import classes from "../pages.module.scss";
 import Block from "@/components/elements/block/block";
 import { getCategories, getProducts } from "@/api/api";
@@ -8,12 +9,15 @@ import ProductList from "@/components/productList/productList";
 import ICategory from "@/types/ICategory";
 import IProduct from "@/types/IProduct";
 import Search from "@/components/elements/search/search";
+import useActions from "@/hooks/useActions";
 
 const Home: FC = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [newProducts, setNewProducts] = useState<IProduct[]>([]);
   const [spinner, setSpinner] = useState(true);
+  const { login } = useParams();
+  const { openLogin } = useActions();
 
   const onSearch = (response: IProduct[] | null): void => {
     setProducts(response || newProducts);
@@ -24,6 +28,9 @@ const Home: FC = () => {
 
   useEffect(() => {
     (async () => {
+      if (login === "login") {
+        openLogin(true);
+      }
       setCategories(await getCategories());
       const games = await getNewGames;
       setProducts(games);

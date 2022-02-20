@@ -1,13 +1,12 @@
-import { FC, ReactElement } from "react";
-import { useLocation, Navigate } from "react-router-dom";
+import { FC } from "react";
+import { useLocation, Outlet, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
-interface PrivateRouteProps {
-  isAuth: boolean;
-}
-
-const PrivateRoute: FC<PrivateRouteProps> = ({ isAuth, children }) => {
+const PrivateRoute: FC = () => {
+  const { isAuth } = useSelector((state: RootState) => state.auth);
   const location = useLocation();
-  return isAuth ? (children as ReactElement) : <Navigate to="/" state={{ from: location }} />;
+  return isAuth ? <Outlet /> : <Navigate to="/login" state={{ from: location }} />;
 };
 
 export default PrivateRoute;

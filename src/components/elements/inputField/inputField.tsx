@@ -11,12 +11,11 @@ interface InputFieldProps {
 
 const InputField: FC<InputFieldProps> = ({ name, register, errors, type }) => (
   <div className={classes.input}>
-    <label htmlFor={classes.input__field}>{name}</label>
-    <input className={classes.input__field} type={type} {...register} />
+    <input className={classes.input__field} placeholder={name} type={type} {...register} />
     <label className={classes.input__error} htmlFor={classes.input__field}>
       {errors[name] && (
         <p>
-          <i className="fa-solid fa-circle-exclamation icon" />
+          <i className="fa-solid fa-circle-exclamation icError" />
           {errors[name]?.message || "Error!"}
         </p>
       )}

@@ -5,7 +5,8 @@ const defaultState: IModalState = {
   isRegisterOpen: false,
 };
 
-const modalReducer = (action: IModalAction, state = defaultState): IModalState => {
+// eslint-disable-next-line default-param-last
+const modalReducer = (state = defaultState, action: IModalAction): IModalState => {
   switch (action.type) {
     case ModalActions.SET_MODAL_LOGIN:
       return { ...state, isLoginOpen: action.payload };

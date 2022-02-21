@@ -9,9 +9,8 @@ import useActions from "@/hooks/useActions";
 import useTypedSelector from "@/hooks/useProtectedSelector";
 
 const Layout: FC = () => {
-  const { openRegister, openLogin } = useActions();
+  const { openRegister, openLogin, signIn } = useActions();
   const { isRegisterOpen, isLoginOpen } = useTypedSelector((state) => state.modal);
-  const { signIn } = useActions();
 
   useEffect(() => {
     const user = localStorage.getItem("user");

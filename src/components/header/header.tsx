@@ -6,6 +6,7 @@ import ModalButton from "@/components/elements/modalButton/modalButton";
 import { Links } from "@/environment/pageLinks";
 import useActions from "@/hooks/useActions";
 import useTypedSelector from "@/hooks/useProtectedSelector";
+import { IconExit, IconProfile } from "@/components/elements/icons/icons";
 
 interface HeaderProps {
   setLoginOpen: (isOpen: boolean) => void;
@@ -36,11 +37,11 @@ const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen }) => {
             }
             to={Links.user}
           >
-            <i className="fa-solid fa-user fa-lg icProfile" />
+            <IconProfile />
             {user?.login || "User Name"}
           </NavLink>
           <button type="button" className={classes.header__logout} onClick={clickLogout}>
-            <i className="fa-solid fa-arrow-right-from-bracket fa-xl" />
+            <IconExit />
           </button>
         </>
       ) : (

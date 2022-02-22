@@ -33,6 +33,8 @@ const SignIn: FC<SignInProps> = ({ setActive }) => {
       const page = state?.from?.pathname || "/";
       navigate(page, { replace: true });
       setActive(false);
+    } else {
+      alert("Wrong login or password!");
     }
     reset();
   };

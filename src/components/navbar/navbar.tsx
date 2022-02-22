@@ -4,12 +4,8 @@ import classes from "./navbar.module.scss";
 import DropMenu from "@/components/elements/dropmenu/dropMenu";
 import NavbarItem from "@/components/navbar/navbarItem";
 
-interface NavbarProps {
-  checkAuth: () => void;
-}
-
-const Navbar: FC<NavbarProps> = ({ checkAuth }) => (
-  <nav className={classes.navbar} onClick={checkAuth} onKeyDown={checkAuth}>
+const Navbar: FC = () => (
+  <nav className={classes.navbar}>
     <ul className={classes.navbar__list}>
       {pageLinks.map((link) =>
         link.link === Links.products ? (

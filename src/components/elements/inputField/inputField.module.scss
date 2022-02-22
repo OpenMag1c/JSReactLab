@@ -1,8 +1,8 @@
 .input {
   display: flex;
   flex-direction: column;
-  text-indent: 10px;
   max-width: 320px;
+  color: #818a91;
 
   &__field {
     margin: 5px 0;
@@ -11,8 +11,8 @@
     font-size: 14px;
     border-radius: 20px;
     border-color: $neonColor;
+    color: #818a91;
     background-color: transparent;
-    color: #737373;
     transition: 0.5s all;
 
     &:hover,
@@ -24,8 +24,9 @@
   }
 
   &__error {
-    height: 30px;
+    height: 50px;
     font-size: 90%;
+    color: #495057;
   }
 }
 

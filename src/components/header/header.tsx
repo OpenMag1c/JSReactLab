@@ -3,27 +3,23 @@ import { FC } from "react";
 import Navbar from "@/components/navbar/navbar";
 import classes from "./header.module.scss";
 import ModalButton from "@/components/elements/modalButton/modalButton";
-import { authType } from "@/types/types";
 import { Links } from "@/environment/pageLinks";
+import useActions from "@/hooks/useActions";
+import useTypedSelector from "@/hooks/useProtectedSelector";
+import { IconExit, IconProfile } from "@/components/elements/icons/icons";
 
 interface HeaderProps {
   setLoginOpen: (isOpen: boolean) => void;
   setRegisterOpen: (isOpen: boolean) => void;
-  setAuth: (props: authType) => void;
-  isAuth: boolean;
-  userName: string | undefined;
 }
 
-const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen, setAuth, isAuth, userName }) => {
+const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen }) => {
+  const { isAuth, user } = useTypedSelector((state) => state.auth);
+  const { logout } = useActions();
   const navigate = useNavigate();
-  const checkAuth = () => {
-    if (!isAuth) {
-      setLoginOpen(true);
-    }
-  };
 
-  const logout = () => {
-    setAuth({ isAuth: false });
+  const clickLogout = () => {
+    logout();
     navigate(Links.home, { replace: true });
   };
 
@@ -32,7 +28,7 @@ const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen, setAuth, isAut
       <Link to={Links.home} className={classes.header__title}>
         Magic Game Store
       </Link>
-      <Navbar checkAuth={checkAuth} />
+      <Navbar />
       {isAuth ? (
         <>
           <NavLink
@@ -41,11 +37,11 @@ const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen, setAuth, isAut
             }
             to={Links.user}
           >
-            <i className="fa-solid fa-user fa-lg icProfile" />
-            {userName || "User Name"}
+            <IconProfile />
+            {user?.login || "User Name"}
           </NavLink>
-          <button type="button" className={classes.header__logout} onClick={logout}>
-            <i className="fa-solid fa-arrow-right-from-bracket fa-xl" />
+          <button type="button" className={classes.header__logout} onClick={clickLogout}>
+            <IconExit />
           </button>
         </>
       ) : (

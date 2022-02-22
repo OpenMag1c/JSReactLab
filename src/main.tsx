@@ -3,13 +3,14 @@ import "./styles/main.scss";
 import { Component, StrictMode } from "react";
 import ReactDom from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "@/components/layout";
+import { Provider } from "react-redux";
+import Layout from "@/components/layout/layout";
 import Products from "@/pages/products/products";
 import Home from "@/pages/home/home";
 import About from "@/pages/about/about";
 import PrivateRoute from "@/components/privateRoute/privateRoute";
-import { authType } from "@/types/types";
 import UserProfile from "@/pages/userprofile/userProfile";
+import store from "@/store";
 
 interface AppProps {
   nothing: boolean;
@@ -17,8 +18,6 @@ interface AppProps {
 
 interface IAppStates {
   hasError: boolean;
-  isAuth: boolean;
-  userName?: string;
 }
 
 class AppContainer extends Component<AppProps, IAppStates> {
@@ -29,7 +28,6 @@ class AppContainer extends Component<AppProps, IAppStates> {
 
     this.state = {
       hasError: false,
-      isAuth: false,
     };
   }
 
@@ -43,62 +41,31 @@ class AppContainer extends Component<AppProps, IAppStates> {
     });
   }
 
-  auth = (props: authType) => {
-    this.setState({
-      isAuth: props.isAuth,
-      userName: props.name,
-    });
-  };
-
   render() {
     return (
       <StrictMode>
-        <BrowserRouter>
-          <Layout setAuth={this.auth} isAuth={this.state.isAuth} userName={this.state.userName}>
+        <Provider store={store}>
+          <BrowserRouter>
             {!this.state.hasError ? (
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products">
-                  <Route
-                    path=":category"
-                    element={
-                      <PrivateRoute isAuth={this.state.isAuth}>
-                        <Products />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route
-                    path=""
-                    element={
-                      <PrivateRoute isAuth={this.state.isAuth}>
-                        <Products />
-                      </PrivateRoute>
-                    }
-                  />
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route element={<PrivateRoute />}>
+                    <Route path="products">
+                      <Route path=":category" element={<Products />} />
+                      <Route path="" element={<Products />} />
+                    </Route>
+                    <Route path="about" element={<About />} />
+                    <Route path="user" element={<UserProfile />} />
+                  </Route>
+                  <Route path=":login" element={<Home />} />
                 </Route>
-                <Route
-                  path="/about"
-                  element={
-                    <PrivateRoute isAuth={this.state.isAuth}>
-                      <About />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/user"
-                  element={
-                    <PrivateRoute isAuth={this.state.isAuth}>
-                      <UserProfile />
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="*" element={<Home />} />
               </Routes>
             ) : (
               <Home />
             )}
-          </Layout>
-        </BrowserRouter>
+          </BrowserRouter>
+        </Provider>
       </StrictMode>
     );
   }

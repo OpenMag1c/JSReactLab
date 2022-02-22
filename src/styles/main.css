@@ -13,8 +13,9 @@ main {
   height: 100%;
 }
 
-.icon {
+.icError {
   margin: 5px;
+  color: #ff004c;
 }
 
 .icArrow {

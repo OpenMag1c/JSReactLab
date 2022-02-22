@@ -1,12 +1,12 @@
 import { FC, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import classes from "../form.module.scss";
 import InputField from "@/components/elements/inputField/inputField";
 import { loginValidation, passwordValidation } from "@/components/forms/validation";
 import IUser from "@/types/IUser";
-import { authType } from "@/types/types";
 import { apiRegister } from "@/api/api";
-import { useNavigate } from "react-router-dom";
+import useActions from "@/hooks/useActions";
 
 interface IFormValues extends IUser {
   "repeat password": string;
@@ -14,10 +14,9 @@ interface IFormValues extends IUser {
 
 interface SignUpProps {
   setActive: (isActive: boolean) => void;
-  setAuth: (props: authType) => void;
 }
 
-const SignUp: FC<SignUpProps> = ({ setActive, setAuth }) => {
+const SignUp: FC<SignUpProps> = ({ setActive }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -25,20 +24,19 @@ const SignUp: FC<SignUpProps> = ({ setActive, setAuth }) => {
     watch,
     reset,
   } = useForm<IFormValues>({
-    mode: "onBlur",
+    mode: "onChange",
   });
   const navigate = useNavigate();
   const password = useRef({});
+  const { signIn } = useActions();
   password.current = watch("password", "");
 
   const onSubmit: SubmitHandler<IFormValues> = async (data) => {
     const response = await apiRegister(data);
     if (response) {
-      setAuth({ isAuth: response, name: data.login });
+      signIn(data);
       navigate("/", { replace: true });
       setActive(false);
-    } else {
-      setAuth({ isAuth: response });
     }
     reset();
   };

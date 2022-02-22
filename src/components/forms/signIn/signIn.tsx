@@ -6,14 +6,13 @@ import InputField from "@/components/elements/inputField/inputField";
 import { loginValidation, passwordValidation } from "@/components/forms/validation";
 import { authorize } from "@/api/api";
 import IUser from "@/types/IUser";
-import { authType } from "@/types/types";
+import useActions from "@/hooks/useActions";
 
 interface SignInProps {
-  setAuth: (props: authType) => void;
   setActive: (isActive: boolean) => void;
 }
 
-const SignIn: FC<SignInProps> = ({ setAuth, setActive }) => {
+const SignIn: FC<SignInProps> = ({ setActive }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -24,17 +23,18 @@ const SignIn: FC<SignInProps> = ({ setAuth, setActive }) => {
   });
   const navigate = useNavigate();
   const location = useLocation();
+  const { signIn } = useActions();
 
   const onSubmit: SubmitHandler<IUser> = async (data) => {
     const response = await authorize(data);
     if (response) {
-      setAuth({ isAuth: response, name: data.login });
+      signIn(data);
       const state = location.state as { from: Location };
       const page = state?.from?.pathname || "/";
       navigate(page, { replace: true });
       setActive(false);
     } else {
-      setAuth({ isAuth: response });
+      alert("Wrong login or password!");
     }
     reset();
   };

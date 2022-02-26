@@ -8,14 +8,25 @@ import useActions from "@/hooks/useActions";
 import { ProfileParams } from "@/types/types";
 import UploadImage from "@/components/elements/uploadImage/uploadImage";
 import InputText from "@/components/elements/inputText/inputText";
+import { regLogin } from "@/components/forms/validation";
 
 const UserProfile: FC = () => {
   const { user } = useTypedSelector((state) => state.auth);
   const [profile, setProfile] = useState<IProfile>();
-  const { openPassword } = useActions();
+  const { openPassword, error } = useActions();
+
+  const validateLogin = (login: string): boolean => {
+    const isValid = regLogin.test(login);
+    return isValid && login.length > 0;
+  };
 
   const clickSave = async () => {
     if (user && profile) {
+      if (!validateLogin(profile.user.login)) {
+        error("Not valid login!");
+        return;
+      }
+
       const response = await saveProfile(profile, { id: user?.id });
       alert(JSON.stringify(response));
     }

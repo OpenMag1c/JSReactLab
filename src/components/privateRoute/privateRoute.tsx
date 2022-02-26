@@ -14,7 +14,7 @@ const PrivateRoute: FC = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
-    if (userId) {
+    if (userId && !isAuth) {
       (async () => {
         const user = await getUser({ id: userId });
         if (user) {
@@ -25,7 +25,7 @@ const PrivateRoute: FC = () => {
     } else {
       setLoading(false);
     }
-  }, [isAuth]);
+  }, []);
 
   if (loading) {
     return <Spinner />;

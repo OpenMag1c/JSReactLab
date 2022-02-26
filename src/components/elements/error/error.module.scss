@@ -1,0 +1,11 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  min-width: 5vw;
+  min-height: 5vh;
+  text-align: center;
+}
+
+.error__message {
+  font-weight: bold;
+}

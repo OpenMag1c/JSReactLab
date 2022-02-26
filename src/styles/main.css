@@ -26,6 +26,10 @@ main {
   margin-right: 5px;
 }
 
+.icBigError {
+  color: #818a91;
+}
+
 a {
   color: #737373;
 }

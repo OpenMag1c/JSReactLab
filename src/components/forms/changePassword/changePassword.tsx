@@ -1,18 +1,18 @@
 import { FC, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import classes from "../form.module.scss";
 import InputField from "@/components/elements/inputField/inputField";
-import { loginValidation, passwordValidation } from "@/components/forms/validation";
+import { passwordValidation } from "@/components/forms/validation";
 import IUser from "@/types/IUser";
-import { apiRegister } from "@/api/api";
+import { changePassword } from "@/api/api";
 import useActions from "@/hooks/useActions";
+import useTypedSelector from "@/hooks/useProtectedSelector";
 
 interface IFormValues extends IUser {
   "repeat password": string;
 }
 
-const SignUp: FC = () => {
+const ChangePassword: FC = () => {
   const {
     register,
     formState: { errors, isValid },
@@ -22,26 +22,23 @@ const SignUp: FC = () => {
   } = useForm<IFormValues>({
     mode: "onChange",
   });
-  const navigate = useNavigate();
+  const { error, openPassword } = useActions();
+  const { user } = useTypedSelector((state) => state.auth);
   const password = useRef({});
-  const { signIn, error, openRegister } = useActions();
   password.current = watch("password", "");
 
   const onSubmit: SubmitHandler<IFormValues> = async (data) => {
-    const response = await apiRegister(data);
+    const response = await changePassword(data.password, { id: user?.id ?? 0 });
     if (response) {
-      signIn({ ...data, id: response });
-      navigate("/", { replace: true });
-      openRegister(false);
+      openPassword(false);
     } else {
-      error("Such user is already exists");
+      error("Error!");
     }
     reset();
   };
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={classes.form__title}>Sign Up</h1>
-      <InputField name="login" type="text" errors={errors} register={register("login", loginValidation)} />
+      <h1 className={classes.form__title}>Change password</h1>
       <InputField name="password" type="password" errors={errors} register={register("password", passwordValidation)} />
       <InputField
         name="repeat password"
@@ -56,4 +53,4 @@ const SignUp: FC = () => {
   );
 };
 
-export default SignUp;
+export default ChangePassword;

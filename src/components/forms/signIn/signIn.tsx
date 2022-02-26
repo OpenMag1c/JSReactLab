@@ -8,11 +8,7 @@ import { authorize } from "@/api/api";
 import IUser from "@/types/IUser";
 import useActions from "@/hooks/useActions";
 
-interface SignInProps {
-  setActive: (isActive: boolean) => void;
-}
-
-const SignIn: FC<SignInProps> = ({ setActive }) => {
+const SignIn: FC = () => {
   const {
     register,
     formState: { errors, isValid },
@@ -23,18 +19,18 @@ const SignIn: FC<SignInProps> = ({ setActive }) => {
   });
   const navigate = useNavigate();
   const location = useLocation();
-  const { signIn } = useActions();
+  const { signIn, error, openLogin } = useActions();
 
   const onSubmit: SubmitHandler<IUser> = async (data) => {
     const response = await authorize(data);
     if (response) {
-      signIn(data);
+      signIn({ ...data, id: response });
       const state = location.state as { from: Location };
       const page = state?.from?.pathname || "/";
       navigate(page, { replace: true });
-      setActive(false);
+      openLogin(false);
     } else {
-      alert("Wrong login or password!");
+      error("Wrong login or password!");
     }
     reset();
   };

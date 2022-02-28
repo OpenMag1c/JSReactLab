@@ -1,36 +1,39 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
-import SignIn from "@/components/forms/signIn/signIn";
-import Modal from "@/components/elements/modal/modal";
-import SignUp from "@/components/forms/signUp/signUp";
+import Modals from "@/components/elements/modal/modals";
+import { getUser } from "@/api/api";
+import Spinner from "@/components/elements/spinner/spinner";
 import useActions from "@/hooks/useActions";
-import useTypedSelector from "@/hooks/useProtectedSelector";
+import { RootState } from "@/store";
 
 const Layout: FC = () => {
-  const { openRegister, openLogin, signIn } = useActions();
-  const { isRegisterOpen, isLoginOpen } = useTypedSelector((state) => state.modal);
+  const [loading, setLoading] = useState<boolean>(true);
+  const { isAuth } = useSelector((state: RootState) => state.auth);
+  const { signIn } = useActions();
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      signIn(JSON.parse(user));
+    const userId = localStorage.getItem("id");
+    if (userId && !isAuth) {
+      (async () => {
+        const user = await getUser({ id: userId });
+        if (user) {
+          signIn(user);
+        }
+        setLoading(false);
+      })();
+    } else {
+      setLoading(false);
     }
   }, []);
 
   return (
     <>
-      <Header setLoginOpen={openLogin} setRegisterOpen={openRegister} />
-      <main>
-        <Outlet />
-      </main>
-      <Modal active={isLoginOpen} setActive={openLogin}>
-        <SignIn setActive={openLogin} />
-      </Modal>
-      <Modal active={isRegisterOpen} setActive={openRegister}>
-        <SignUp setActive={openRegister} />
-      </Modal>
+      <Header />
+      <main>{loading ? <Spinner /> : <Outlet />}</main>
+      <Modals />
       <Footer />
     </>
   );

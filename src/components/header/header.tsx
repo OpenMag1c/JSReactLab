@@ -8,14 +8,9 @@ import useActions from "@/hooks/useActions";
 import useTypedSelector from "@/hooks/useProtectedSelector";
 import { IconExit, IconProfile } from "@/components/elements/icons/icons";
 
-interface HeaderProps {
-  setLoginOpen: (isOpen: boolean) => void;
-  setRegisterOpen: (isOpen: boolean) => void;
-}
-
-const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen }) => {
+const Header: FC = () => {
   const { isAuth, user } = useTypedSelector((state) => state.auth);
-  const { logout } = useActions();
+  const { logout, openLogin, openRegister } = useActions();
   const navigate = useNavigate();
 
   const clickLogout = () => {
@@ -46,8 +41,8 @@ const Header: FC<HeaderProps> = ({ setLoginOpen, setRegisterOpen }) => {
         </>
       ) : (
         <>
-          <ModalButton title="Sign In" setIsOpen={setLoginOpen} />
-          <ModalButton title="Sign Up" setIsOpen={setRegisterOpen} />
+          <ModalButton title="Sign In" setIsOpen={openLogin} />
+          <ModalButton title="Sign Up" setIsOpen={openRegister} />
         </>
       )}
     </header>

@@ -7,3 +7,7 @@ export const IconProfile: FC = () => <i className="fa-solid fa-user fa-lg icProf
 export const IconError: FC = () => <i className="fa-solid fa-circle-exclamation icError" />;
 
 export const IconDropDown: FC = () => <i className="fa-solid fa-caret-down icArrow" />;
+
+export const IconPen: FC = () => <i className="fa-solid fa-pen fa-lg icPen" />;
+
+export const IconBigError: FC = () => <i className="fa-solid fa-triangle-exclamation fa-6x icBigError" />;

@@ -1,0 +1,61 @@
+@import "src/styles/variables";
+
+.name {
+  color: $neonColor;
+  flex: 1;
+  display: block;
+  min-width: 0;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+
+  &:focus {
+    font-size: 25px;
+    color: $backColor;
+    outline: none;
+    margin-bottom: 5px;
+  }
+
+  &__icon {
+    border: none;
+    color: $backColor;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: $neonColor;
+    }
+  }
+}
+
+.description {
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  margin-top: 5%;
+  padding: 10px;
+  border-radius: 20px;
+  height: 70%;
+  margin-bottom: 10%;
+  resize: none;
+
+  &:focus {
+    color: $backColor;
+    outline: none;
+    border: none;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 2%;
+    bottom: 15%;
+    display: flex;
+    border: none;
+    color: $backColor;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: $neonColor;
+    }
+  }
+}

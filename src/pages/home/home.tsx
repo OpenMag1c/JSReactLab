@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import classes from "../pages.module.scss";
 import Block from "@/components/elements/block/block";
 import { getCategories, getProducts } from "@/api/api";
@@ -18,6 +18,7 @@ const Home: FC = () => {
   const [spinner, setSpinner] = useState(true);
   const { login } = useParams();
   const { openLogin } = useActions();
+  const navigate = useNavigate();
 
   const onSearch = (response: IProduct[] | null): void => {
     setProducts(response || newProducts);
@@ -30,6 +31,7 @@ const Home: FC = () => {
     (async () => {
       if (login === "login") {
         openLogin(true);
+        navigate("/");
       }
       setCategories(await getCategories());
       const games = await getNewGames;

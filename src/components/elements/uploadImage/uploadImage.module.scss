@@ -1,0 +1,25 @@
+.avatar {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 10px;
+  margin: 20px;
+
+  &__image {
+    object-fit: cover;
+    border-radius: 30px;
+    height: 60%;
+    margin: 40px 40px 0 40px;
+    border: 5px solid $neonColor;
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+  }
+}

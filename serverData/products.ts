@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import mockServerHelper from "webpack-mock-server/lib/mockServerHelper";
-import { productImages } from "./productImages";
+import { productImages } from "@/constants/images";
 import IProduct from "@/types/IProduct";
 import categories from "./categories";
 

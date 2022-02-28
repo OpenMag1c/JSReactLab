@@ -8,7 +8,7 @@ import useActions from "@/hooks/useActions";
 import { ProfileParams } from "@/types/types";
 import UploadImage from "@/components/elements/uploadImage/uploadImage";
 import InputText from "@/components/elements/inputText/inputText";
-import { regLogin } from "@/components/forms/validation";
+import { regularLogin } from "@/constants/regular";
 
 const UserProfile: FC = () => {
   const { user } = useTypedSelector((state) => state.auth);
@@ -16,7 +16,7 @@ const UserProfile: FC = () => {
   const { openPassword, error } = useActions();
 
   const validateLogin = (login: string): boolean => {
-    const isValid = regLogin.test(login);
+    const isValid = regularLogin.test(login);
     return isValid && login.length > 0;
   };
 

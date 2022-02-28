@@ -2,7 +2,7 @@ import { FC, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import classes from "../form.module.scss";
 import InputField from "@/components/elements/inputField/inputField";
-import { passwordValidation } from "@/components/forms/validation";
+import { passwordValidation, repeatPassword } from "@/components/forms/validation";
 import IUser from "@/types/IUser";
 import { changePassword } from "@/api/api";
 import useActions from "@/hooks/useActions";
@@ -44,9 +44,7 @@ const ChangePassword: FC = () => {
         name="repeat password"
         type="password"
         errors={errors}
-        register={register("repeat password", {
-          validate: (value) => value === password.current || "The passwords do not match",
-        })}
+        register={register("repeat password", repeatPassword(password.current.toString()))}
       />
       <input className={classes.form__submit} value="Submit" type="submit" disabled={!isValid} />
     </form>

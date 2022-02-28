@@ -1,10 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import mockServerHelper from "webpack-mock-server/lib/mockServerHelper";
 import ICategory from "@/types/ICategory";
-
-const playstationLogo = "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Playstation_pk1udu.png";
-const pcLogo = "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/PC_xzabct.png";
-const xboxLogo = "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/XBOX_xasedy.png";
+import { categoryImages } from "@/constants/images";
 
 interface ICategories {
   [key: string]: ICategory;
@@ -12,7 +9,7 @@ interface ICategories {
 
 const categories: ICategories = {
   playstation: {
-    img: playstationLogo,
+    img: categoryImages.playstationLogo,
     id: mockServerHelper.getUniqueIdInt(),
     name: "playstation",
     title: "Playstation 5",
@@ -21,13 +18,13 @@ const categories: ICategories = {
     id: mockServerHelper.getUniqueIdInt(),
     name: "xbox",
     title: "XBOX",
-    img: xboxLogo,
+    img: categoryImages.xboxLogo,
   },
   pc: {
     id: mockServerHelper.getUniqueIdInt(),
     name: "pc",
     title: "PC",
-    img: pcLogo,
+    img: categoryImages.pcLogo,
   },
 };
 

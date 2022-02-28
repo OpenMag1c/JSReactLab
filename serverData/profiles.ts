@@ -1,15 +1,15 @@
 import IProfile from "@/types/IProfile";
 import users from "./users";
 import IUser from "@/types/IUser";
+import { profileImages } from "@/constants/images";
 
-const avatar = "https://res.cloudinary.com/dvweto8rq/image/upload/v1645534802/WebAPI/avaKlinok_nhvzi0.jpg";
-const emptyAvatar = "https://res.cloudinary.com/dvweto8rq/image/upload/v1645535361/WebAPI/minifig_pmrbfj.png";
-
-const userProfiles: IProfile[] = [{ user: users[1], avatar, description: "13 y.o. boy, I go to school every day<3" }];
+const userProfiles: IProfile[] = [
+  { user: users[1], avatar: profileImages.user, description: "13 y.o. boy, I go to school every day<3" },
+];
 
 export const getEmptyProfile = (user: IUser) => {
   const newProfile: IProfile = {
-    avatar: emptyAvatar,
+    avatar: profileImages.empty,
     user,
     description: "Write smth about yourself",
   };

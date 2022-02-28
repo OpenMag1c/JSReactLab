@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import classes from "../form.module.scss";
 import InputField from "@/components/elements/inputField/inputField";
-import { loginValidation, passwordValidation } from "@/components/forms/validation";
+import { loginValidation, passwordValidation, repeatPassword } from "@/components/forms/validation";
 import IUser from "@/types/IUser";
 import { apiRegister } from "@/api/api";
 import useActions from "@/hooks/useActions";
@@ -38,6 +38,7 @@ const SignUp: FC = () => {
     }
     reset();
   };
+
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={classes.form__title}>Sign Up</h1>
@@ -47,9 +48,7 @@ const SignUp: FC = () => {
         name="repeat password"
         type="password"
         errors={errors}
-        register={register("repeat password", {
-          validate: (value) => value === password.current || "The passwords do not match",
-        })}
+        register={register("repeat password", repeatPassword(password.current.toString()))}
       />
       <input className={classes.form__submit} value="Submit" type="submit" disabled={!isValid} />
     </form>

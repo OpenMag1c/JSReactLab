@@ -1,7 +1,5 @@
 import { RegisterOptions } from "react-hook-form";
-
-export const regLogin = /^[a-zA-Z](.[a-zA-Z0-9_-]*)$/;
-export const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}$/;
+import { regularLogin, regularPassword } from "@/constants/regular";
 
 export const loginValidation: RegisterOptions = {
   required: "Can't be empty!",
@@ -14,7 +12,7 @@ export const loginValidation: RegisterOptions = {
     message: "Should be less than 15 symbols",
   },
   pattern: {
-    value: regLogin,
+    value: regularLogin,
     message: "Wrong symbols!",
   },
 };
@@ -30,7 +28,11 @@ export const passwordValidation: RegisterOptions = {
     message: "Should be less than 20 symbols",
   },
   pattern: {
-    value: regPassword,
+    value: regularPassword,
     message: `Password should contain at least one numeric digit, one uppercase and one lowercase letter!`,
   },
 };
+
+export const repeatPassword = (password: string): RegisterOptions => ({
+  validate: (value) => value === password || "The passwords do not match",
+});

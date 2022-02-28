@@ -15,3 +15,14 @@ export const productImages: IImages = {
   Snake: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Snake_toiezu.jpg",
   ContraCity: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Logo/Contra_City_r3iefw.jpg",
 };
+
+export const profileImages: IImages = {
+  empty: "https://res.cloudinary.com/dvweto8rq/image/upload/v1645535361/WebAPI/minifig_pmrbfj.png",
+  user: "https://res.cloudinary.com/dvweto8rq/image/upload/v1645534802/WebAPI/avaKlinok_nhvzi0.jpg",
+};
+
+export const categoryImages: IImages = {
+  playstationLogo: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/Playstation_pk1udu.png",
+  pcLogo: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/PC_xzabct.png",
+  xboxLogo: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/XBOX_xasedy.png",
+};

@@ -3,6 +3,7 @@ import mockServerHelper from "webpack-mock-server/lib/mockServerHelper";
 import { productImages } from "@/constants/images";
 import IProduct from "@/types/IProduct";
 import categories from "./categories";
+import { Age, Genres } from "@/constants/filters";
 
 const products: IProduct[] = [
   {
@@ -15,6 +16,8 @@ const products: IProduct[] = [
     price: 19.99,
     img: productImages.Horizon,
     date: new Date(2015, 6, 15),
+    age: Age.Eighteen,
+    genre: Genres.RPG,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -23,9 +26,11 @@ const products: IProduct[] = [
     categoryId: categories.pc.id,
     description:
       "The game pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based game modes. The most common game modes involve the Terrorists planting a bomb while Counter-Terrorists attempt to stop them, or Counter-Terrorists attempting to rescue hostages that the Terrorists have captured. There are nine official game modes, all of which have distinct characteristics specific to that mode. The game also has matchmaking support that allows players to play on dedicated Valve servers, in addition to community-hosted servers with custom maps and game modes.",
-    price: 0,
+    price: 4.99,
     img: productImages.CounterStrike,
     date: new Date(2018, 8, 21),
+    age: Age.Eighteen,
+    genre: Genres.Shooter,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -37,6 +42,8 @@ const products: IProduct[] = [
     price: 0,
     img: productImages.BrawlStars,
     date: new Date(2018, 12, 12),
+    age: Age.Sixth,
+    genre: Genres.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -48,6 +55,8 @@ const products: IProduct[] = [
     price: 27.99,
     img: productImages.HalfLifeVr,
     date: new Date(2020, 3, 23),
+    age: Age.Eighteen,
+    genre: Genres.Shooter,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -59,6 +68,8 @@ const products: IProduct[] = [
     price: 24.99,
     img: productImages.Skyrim,
     date: new Date(2011, 11, 11),
+    age: Age.Eighteen,
+    genre: Genres.RPG,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -70,6 +81,8 @@ const products: IProduct[] = [
     price: 0,
     img: productImages.ClashRoyale,
     date: new Date(2016, 6, 3),
+    age: Age.Three,
+    genre: Genres.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -81,6 +94,8 @@ const products: IProduct[] = [
     price: 29.99,
     img: productImages.BeatSaber,
     date: new Date(2019, 5, 21),
+    age: Age.Twelve,
+    genre: Genres.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -92,6 +107,8 @@ const products: IProduct[] = [
     price: 2.49,
     img: productImages.Terraria,
     date: new Date(2011, 6, 5),
+    age: Age.Three,
+    genre: Genres.RPG,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -103,6 +120,8 @@ const products: IProduct[] = [
     price: 11.99,
     img: productImages.GenshinImpact,
     date: new Date(2020, 8, 28),
+    age: Age.AllAges,
+    genre: Genres.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -111,9 +130,11 @@ const products: IProduct[] = [
     categoryId: categories.playstation.id,
     description:
       "Counter-Strike (CS) is a series of multiplayer first-person shooter video games in which teams of terrorists battle to perpetrate an act of terror (bombing, hostage-taking, assassination) while counter-terrorists try to prevent it (bomb defusal, hostage rescue, escort mission). The series began on Windows in 1999 with the release of the first game, Counter-Strike.",
-    price: 0,
+    price: 1.99,
     img: productImages.ContraCity,
     date: new Date(2010, 10, 25),
+    age: Age.Twelve,
+    genre: Genres.Shooter,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -125,6 +146,8 @@ const products: IProduct[] = [
     price: 0.99,
     img: productImages.Snake,
     date: new Date(1997, 15, 1),
+    age: Age.AllAges,
+    genre: Genres.Arcade,
   },
 ];
 

@@ -7,16 +7,19 @@ import Spinner from "@/components/elements/spinner/spinner";
 import Block from "@/components/elements/block/block";
 import ProductList from "@/components/productList/productList";
 import IProduct from "@/types/IProduct";
-
-type ProductsUrlParams = {
-  category?: string;
-};
+import { IParams, ProductsUrlParams } from "@/types/types";
+import { getParams } from "@/api/utils";
+import ProductFilter from "@/components/productFilter/productFilter";
+import IFilter from "@/types/IFilter";
+import defaultFilter from "@/constants/defaultFilter";
 
 const Products: FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
   const { category } = useParams<ProductsUrlParams>();
   const [spinner, setSpinner] = useState(true);
+  const [filter, setFilter] = useState<IFilter>(defaultFilter);
+  const [params, setParams] = useState<IParams>(getParams(defaultFilter));
 
   const onSearch = (response: IProduct[] | null): void => {
     setProducts(response || allProducts);
@@ -25,20 +28,22 @@ const Products: FC = () => {
 
   useEffect(() => {
     (async () => {
-      const prods = await getProducts();
-      setAllProducts(prods);
+      let param = getParams(filter);
       if (category) {
-        setProducts(await getProducts({ category }));
-      } else {
-        setProducts(prods);
+        param = { ...param, category };
       }
+      const prods = await getProducts(param);
+      setProducts(prods);
+      setAllProducts(prods);
+      setParams(param);
       setSpinner(false);
     })();
-  }, [category]);
+  }, [category, filter]);
 
   return (
     <div className={classes.products}>
-      <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} />
+      <ProductFilter filter={filter} setFilter={setFilter} />
+      <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} params={params} />
       <Block title="Products">{spinner ? <Spinner /> : <ProductList products={products} />}</Block>
     </div>
   );

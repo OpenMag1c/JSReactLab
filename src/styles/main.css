@@ -13,6 +13,11 @@ main {
   height: 100%;
 }
 
+li {
+  list-style-type: none; /* Убираем маркеры */
+  cursor: pointer;
+}
+
 .icError {
   margin: 5px;
   color: #ff004c;

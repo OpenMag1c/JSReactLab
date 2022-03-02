@@ -1,0 +1,21 @@
+@import "../styles/variables";
+
+.filter {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  left: 0;
+  margin: 10px;
+  border-radius: 5px 5px 20px 20px;
+  border-bottom: 4px solid $neonColor;
+  box-shadow: 1px 1px 5px $neonColor;
+
+  &__title {
+    font-weight: normal;
+    margin: 10px;
+    color: $backColor;
+    border-bottom: 2px solid $neonColor;
+  }
+}

@@ -4,19 +4,21 @@ import classes from "./search.module.scss";
 import { getProducts } from "@/api/api";
 import { debounce } from "@/api/utils";
 import IProduct from "@/types/IProduct";
+import { IParams } from "@/types/types";
 
 interface SearchProps {
   onSearch: (response: IProduct[] | null) => void;
   loader: (isActive: boolean) => void;
   placeholder: string;
+  params: IParams | undefined;
 }
 
 type reactEventProp = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
-const Search: FC<SearchProps> = ({ onSearch, loader, placeholder }) => {
+const Search: FC<SearchProps> = ({ onSearch, loader, placeholder, params }) => {
   const makeResponse = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const search: string = event.target.value;
-    const response = search ? await getProducts({ name: event.target.value }) : null;
+    const response = search ? await getProducts({ ...params, name: event.target.value }) : null;
     onSearch(response);
   };
 

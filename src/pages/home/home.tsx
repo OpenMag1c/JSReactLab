@@ -10,6 +10,7 @@ import ICategory from "@/types/ICategory";
 import IProduct from "@/types/IProduct";
 import Search from "@/components/elements/search/search";
 import useActions from "@/hooks/useActions";
+import { paramsHome } from "@/constants/defaultFilter";
 
 const Home: FC = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -25,8 +26,6 @@ const Home: FC = () => {
     setSpinner(false);
   };
 
-  const getNewGames: Promise<IProduct[]> = getProducts({ amount: 3, sortBy: "date" });
-
   useEffect(() => {
     (async () => {
       if (login === "login") {
@@ -34,7 +33,7 @@ const Home: FC = () => {
         navigate("/");
       }
       setCategories(await getCategories());
-      const games = await getNewGames;
+      const games = await getProducts(paramsHome);
       setProducts(games);
       setNewProducts(games);
       setSpinner(false);
@@ -43,7 +42,7 @@ const Home: FC = () => {
 
   return (
     <div className={classes.home}>
-      <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} />
+      <Search onSearch={onSearch} placeholder="Search" loader={setSpinner} params={paramsHome} />
       <Block title="Categories">
         {categories.map((category) => (
           <Category category={category} key={category.id} />

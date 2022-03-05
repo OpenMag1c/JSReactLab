@@ -5,27 +5,36 @@ import categories from "./serverData/categories";
 import products from "./serverData/products";
 import users from "./serverData/users";
 import userProfiles, { getEmptyProfile } from "./serverData/profiles";
+import { Age, Genres, SortingType } from "@/constants/filters";
 
 export default webpackMockServer.add((app, helper) => {
   app.get("/api/products", (_req, res) => {
     let productsList = [...products];
+    const { sortBy: filter, name: searchName, category: categoryName, amount, genre, age, type } = _req.query;
 
-    if (_req.query.sortBy) {
-      const { sortBy: filter } = _req.query;
-      const sortByKey = (a: IProduct, b: IProduct, key: keyof IProduct = "name") => (a[key] < b[key] ? 1 : -1);
-      productsList = productsList.sort((a, b) => sortByKey(a, b, filter as keyof IProduct));
+    if (genre && +genre !== Genres.All) {
+      productsList = productsList.filter((product) => product.genre === +genre);
     }
 
-    if (_req.query.name) {
-      const { name: searchName } = _req.query;
+    if (age && +age !== Age.AllAges) {
+      productsList = productsList.filter((product) => product.age === +age);
+    }
 
+    if (filter) {
+      const sortByKey = (a: IProduct, b: IProduct, key: keyof IProduct = "name") => (a[key] < b[key] ? 1 : -1);
+      productsList = productsList.sort((a, b) => sortByKey(a, b, filter as keyof IProduct));
+      if (type && +type === SortingType.Ascending) {
+        productsList.reverse();
+      }
+    }
+
+    if (searchName) {
       productsList = productsList.filter((product) =>
         product.name.toLowerCase().includes(String(searchName).toLowerCase())
       );
     }
 
-    if (_req.query.category) {
-      const { category: categoryName } = _req.query;
+    if (categoryName) {
       const category = `${categoryName}` in categories ? categories[`${categoryName}`] : null;
 
       if (category && category.id) {
@@ -33,12 +42,8 @@ export default webpackMockServer.add((app, helper) => {
       }
     }
 
-    if (_req.query.amount) {
-      const { amount } = _req.query;
-
-      if (+amount) {
-        productsList = productsList.length > +amount ? productsList.slice(0, +amount) : productsList;
-      }
+    if (amount && +amount) {
+      productsList = productsList.length > +amount ? productsList.slice(0, +amount) : productsList;
     }
 
     res.json(productsList);
@@ -60,12 +65,12 @@ export default webpackMockServer.add((app, helper) => {
 
   app.get("/api/auth/getUser/", (req, res) => {
     const { id } = req.query;
+    const user = id ? users.find((u) => u.id === +id) : null;
 
-    if (id) {
-      const user = id ? users.find((u) => u.id === +id) : null;
+    if (user) {
       res.json(user);
     } else {
-      res.status(404).json();
+      res.json(null);
     }
   });
 

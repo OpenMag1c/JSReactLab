@@ -1,3 +1,5 @@
+import { Age, Genres } from "@/constants/filters";
+
 export default interface IProduct {
   name: string;
   id: string | number;
@@ -7,4 +9,6 @@ export default interface IProduct {
   categoryId: string | number;
   img: string;
   date: Date;
+  age: Age;
+  genre: Genres;
 }

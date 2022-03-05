@@ -4,10 +4,7 @@ import IProduct from "@/types/IProduct";
 import getUrlParams from "@/api/utils";
 import IUser from "@/types/IUser";
 import IProfile from "@/types/IProfile";
-
-interface IParams {
-  [key: string]: string | number;
-}
+import { IParams } from "@/types/types";
 
 export const getCategories = async (): Promise<ICategory[]> => {
   const data = await fetch(api.categories);
@@ -34,7 +31,7 @@ export const apiRegister = async (user: IUser): Promise<number | null> => {
 export const getUser = async (params: IParams = {}): Promise<IUser | null> => {
   const response = await fetch(`${api.getUser}${getUrlParams(params)}`);
 
-  return response.status === 200 ? response.json() : null;
+  return response.json();
 };
 
 export const getProfile = async (params: IParams = {}): Promise<IProfile> => {

@@ -8,7 +8,6 @@ const defaultState: IModalState = {
   errorMessage: "",
 };
 
-// eslint-disable-next-line default-param-last
 const modalReducer = (state = defaultState, action: ModalAction): IModalState => {
   switch (action.type) {
     case ModalActions.SET_MODAL_LOGIN:

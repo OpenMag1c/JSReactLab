@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import searchIcon from "images/search.png";
 import classes from "./search.module.scss";
 import { getProducts } from "@/api/api";
@@ -23,19 +23,14 @@ const Search: FC<SearchProps> = ({ onSearch, loader, placeholder, params }) => {
   };
 
   const debouncedOnChange: reactEventProp = debounce(makeResponse, 1000);
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     loader(true);
     debouncedOnChange(event);
-  };
+  }, []);
 
   return (
     <div className={classes.search__inputs}>
-      <input
-        className={classes.search__input__element}
-        type="text"
-        placeholder={placeholder}
-        onChange={onChangeHandler}
-      />
+      <input className={classes.search__input__element} type="text" placeholder={placeholder} onChange={onChange} />
       <div className={classes.search__icon}>
         <img className={classes.search__icon__img} alt="search button" src={searchIcon} />
       </div>

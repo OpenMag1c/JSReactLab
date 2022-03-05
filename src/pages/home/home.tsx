@@ -26,8 +26,6 @@ const Home: FC = () => {
     setSpinner(false);
   };
 
-  const getNewGames: Promise<IProduct[]> = getProducts(paramsHome);
-
   useEffect(() => {
     (async () => {
       if (login === "login") {
@@ -35,7 +33,7 @@ const Home: FC = () => {
         navigate("/");
       }
       setCategories(await getCategories());
-      const games = await getNewGames;
+      const games = await getProducts(paramsHome);
       setProducts(games);
       setNewProducts(games);
       setSpinner(false);

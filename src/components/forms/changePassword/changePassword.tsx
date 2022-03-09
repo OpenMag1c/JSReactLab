@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import classes from "../form.module.scss";
-import InputField from "@/components/elements/inputField/inputField";
+import InputField from "@/components/elements/input/inputField/inputField";
 import { passwordValidation, repeatPassword } from "@/components/forms/validation";
 import IUser from "@/types/IUser";
 import { changePassword } from "@/api/api";

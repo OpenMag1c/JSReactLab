@@ -11,6 +11,7 @@ import About from "@/pages/about/about";
 import PrivateRoute from "@/components/privateRoute/privateRoute";
 import UserProfile from "@/pages/userprofile/userProfile";
 import store from "@/store";
+import Order from "@/pages/order/order";
 
 interface AppProps {
   nothing: boolean;
@@ -57,6 +58,7 @@ class AppContainer extends Component<AppProps, IAppStates> {
                     </Route>
                     <Route path="about" element={<About />} />
                     <Route path="user" element={<UserProfile />} />
+                    <Route path="order" element={<Order />} />
                   </Route>
                   <Route path=":login" element={<Home />} />
                 </Route>

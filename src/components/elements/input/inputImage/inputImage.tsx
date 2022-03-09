@@ -1,16 +1,16 @@
 import React, { FC, useRef } from "react";
-import classes from "./uploadImage.module.scss";
-import buttonStyles from "@/pages/userprofile/userProfile.module.scss";
+import classes from "./inputImage.module.scss";
 import useActions from "@/hooks/useActions";
-import { ProfileParams } from "@/types/types";
+import { InputParams } from "@/types/types";
+import MyButton from "@/components/elements/button/myButton";
 
-interface UploadImageProps {
+interface InputImageProps {
   changeAvatar: (data: { [key: string]: string }) => void;
   avatar: string;
-  label: ProfileParams;
+  label: InputParams;
 }
 
-const UploadImage: FC<UploadImageProps> = ({ avatar, changeAvatar, label }) => {
+const InputImage: FC<InputImageProps> = ({ avatar, changeAvatar, label }) => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const { error } = useActions();
 
@@ -42,11 +42,11 @@ const UploadImage: FC<UploadImageProps> = ({ avatar, changeAvatar, label }) => {
     <div className={classes.avatar}>
       <img className={classes.avatar__image} alt="avatar" src={avatar} />
       <input ref={inputRef} className={classes.avatar__input} type="file" accept="image/*" onInput={loadFile} />
-      <button type="button" className={buttonStyles.button} onClick={onClick}>
-        Change image
-      </button>
+      <div className={classes.avatar__btn}>
+        <MyButton onClick={onClick} text="Change image" />
+      </div>
     </div>
   );
 };
 
-export default UploadImage;
+export default InputImage;

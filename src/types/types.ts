@@ -18,10 +18,11 @@ export type ProductsUrlParams = {
   category?: string;
 };
 
-export enum ProfileParams {
+export enum InputParams {
   login = "login",
   description = "description",
   avatar = "avatar",
+  amount = "amount",
 }
 
 export interface MenuFilterProps {
@@ -29,4 +30,5 @@ export interface MenuFilterProps {
   items: { [key: string]: string };
   change: (label: Filters, data: number) => void;
   init: number;
+  styles?: string;
 }

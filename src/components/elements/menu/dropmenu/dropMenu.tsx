@@ -17,8 +17,8 @@ const DropMenu: FC<DropMenuProps> = ({ link }) => (
     </NavLink>
     <div className={classes.drop__menu}>
       {categoryLinks.map((category) => (
-        <NavLink to={category.link} className={classes.drop__link} key={category.name}>
-          {category.title}
+        <NavLink to={category.link} className={classes.drop__link} key={category.platform.title}>
+          {category.platform.title}
         </NavLink>
       ))}
     </div>

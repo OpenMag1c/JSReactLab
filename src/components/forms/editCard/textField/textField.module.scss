@@ -1,0 +1,22 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: $backColor;
+
+  &__input {
+    width: 70%;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid $backColor;
+    color: $backColor;
+
+    &:hover,
+    &:focus {
+      border: 1px solid white;
+    }
+  }
+}

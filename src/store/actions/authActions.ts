@@ -13,3 +13,7 @@ export const logout = () => (dispatch: Dispatch<AuthAction>) => {
 export const setAuth = (isAuth: boolean) => (dispatch: Dispatch<AuthAction>) => {
   dispatch({ type: AuthActions.SET_AUTH, payload: isAuth });
 };
+
+export const setBalance = (money: number) => (dispatch: Dispatch<AuthAction>) => {
+  dispatch({ type: AuthActions.SET_BALANCE, payload: money });
+};

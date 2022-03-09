@@ -3,6 +3,7 @@ export enum Filters {
   Type = "Type",
   Genre = "Genre",
   Age = "Age",
+  Platform = "Platform",
 }
 
 export enum Age {

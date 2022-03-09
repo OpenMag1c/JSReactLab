@@ -59,6 +59,13 @@
   }
 }
 
+.header__money {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
 .active {
   color: #00aced;
   border-bottom: 3px solid #00aced;

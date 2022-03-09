@@ -5,15 +5,16 @@ import { getProfile, saveProfile } from "@/api/api";
 import classes from "./userProfile.module.scss";
 import inputStyles from "./inputText.module.scss";
 import useActions from "@/hooks/useActions";
-import { ProfileParams } from "@/types/types";
-import UploadImage from "@/components/elements/uploadImage/uploadImage";
-import InputText from "@/components/elements/inputText/inputText";
+import { InputParams } from "@/types/types";
+import InputImage from "@/components/elements/input/inputImage/inputImage";
+import InputText from "@/components/elements/input/inputText/inputText";
 import { regularLogin } from "@/constants/regular";
+import MyButton from "@/components/elements/button/myButton";
 
 const UserProfile: FC = () => {
   const { user } = useTypedSelector((state) => state.auth);
   const [profile, setProfile] = useState<IProfile>();
-  const { openPassword, error } = useActions();
+  const { openPassword, error, signIn } = useActions();
 
   const validateLogin = (login: string): boolean => {
     const isValid = regularLogin.test(login);
@@ -28,7 +29,7 @@ const UserProfile: FC = () => {
       }
 
       const response = await saveProfile(profile, { id: user?.id });
-      alert(JSON.stringify(response));
+      signIn(response.user);
     }
   };
 
@@ -57,30 +58,26 @@ const UserProfile: FC = () => {
   return (
     <div className={classes.profilePage}>
       <div className={classes.profile}>
-        <UploadImage avatar={profile?.avatar || ""} label={ProfileParams.avatar} changeAvatar={changeProfile} />
+        <InputImage avatar={profile?.avatar || ""} label={InputParams.avatar} changeAvatar={changeProfile} />
         <div className={classes.info}>
           <div className={classes.info__username}>
             <InputText
-              label={ProfileParams.login}
+              label={InputParams.login}
               text={profile?.user.login || ""}
               styles={{ input: inputStyles.name, icon: inputStyles.name__icon }}
               changeText={changeProfile}
             />
           </div>
           <InputText
-            label={ProfileParams.description}
+            label={InputParams.description}
             text={profile?.description || ""}
             styles={{ input: inputStyles.description, icon: inputStyles.description__icon }}
             changeText={changeProfile}
           />
         </div>
         <div className={classes.buttons}>
-          <button type="button" className={classes.button} onClick={clickSave}>
-            Save profile
-          </button>
-          <button type="button" className={classes.button} onClick={changePassword}>
-            Change password
-          </button>
+          <MyButton onClick={clickSave} text="Save profile" />
+          <MyButton onClick={changePassword} text="Change password" />
         </div>
       </div>
     </div>

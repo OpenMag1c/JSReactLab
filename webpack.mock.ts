@@ -1,11 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import webpackMockServer from "webpack-mock-server";
 import IProduct from "@/types/IProduct";
-import categories from "./serverData/categories";
 import products from "./serverData/products";
 import users from "./serverData/users";
 import userProfiles, { getEmptyProfile } from "./serverData/profiles";
 import { Age, Genres, SortingType } from "@/constants/filters";
+import categories from "@/constants/categories";
+import IUser, { Role } from "@/types/IUser";
 
 export default webpackMockServer.add((app, helper) => {
   app.get("/api/products", (_req, res) => {
@@ -35,10 +36,10 @@ export default webpackMockServer.add((app, helper) => {
     }
 
     if (categoryName) {
-      const category = `${categoryName}` in categories ? categories[`${categoryName}`] : null;
+      const category = categories.find((platform) => platform.title === categoryName);
 
-      if (category && category.id) {
-        productsList = productsList.filter((elem) => elem.categoryId === category.id);
+      if (category) {
+        productsList = productsList.filter((elem) => elem.category.includes(category.type));
       }
     }
 
@@ -48,16 +49,13 @@ export default webpackMockServer.add((app, helper) => {
 
     res.json(productsList);
   });
-  app.get("/api/categories", (_req, res) => {
-    res.json(Object.values(categories));
-  });
 
   app.post("/api/auth/signIn/", (req, res) => {
     const { login, password } = JSON.parse(req.body);
     const user = users.find((u) => u.login === login && u.password === password);
 
     if (user) {
-      res.json(user.id);
+      res.json(user);
     } else {
       res.status(404).json();
     }
@@ -87,8 +85,15 @@ export default webpackMockServer.add((app, helper) => {
 
     if (login && password) {
       const id = helper.getUniqueIdInt();
-      users.push({ login, password, id });
-      res.json(id);
+      const newUser: IUser = {
+        login,
+        password,
+        id,
+        balance: 0,
+        role: Role.User,
+      };
+      users.push(newUser);
+      res.json(newUser);
     } else {
       res.status(400).json();
     }

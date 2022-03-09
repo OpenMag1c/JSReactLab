@@ -1,8 +1,16 @@
 import React, { FC, useEffect, useRef } from "react";
 import classes from "./pullMenu.module.scss";
-import { MenuFilterProps } from "@/types/types";
+import { Filters } from "@/constants/filters";
 
-const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init }) => {
+interface MenuFilterProps {
+  title: Filters;
+  items: { [key: string]: string };
+  change: (label: Filters, data: number) => void;
+  init: number;
+  styles?: string;
+}
+
+const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init, styles }) => {
   const selectRef = useRef() as React.MutableRefObject<HTMLSelectElement>;
 
   const changeOption = () => {
@@ -20,7 +28,7 @@ const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init }) => {
   return (
     <form className={classes.pullDown}>
       {title}
-      <select ref={selectRef} className={classes.pullDown__select} onChange={changeOption}>
+      <select ref={selectRef} className={styles} onChange={changeOption}>
         {Object.values(items).map((item) => (
           <option className={classes.pullDown__option} key={item}>
             {item}
@@ -29,6 +37,10 @@ const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init }) => {
       </select>
     </form>
   );
+};
+
+PullMenu.defaultProps = {
+  styles: classes.pullDown__select,
 };
 
 export default PullMenu;

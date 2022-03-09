@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Modal from "@/components/elements/modal/modal";
+import Modal from "@/components/modal/modal";
 import SignIn from "@/components/forms/signIn/signIn";
 import SignUp from "@/components/forms/signUp/signUp";
 import ChangePassword from "@/components/forms/changePassword/changePassword";
@@ -27,6 +27,9 @@ const Modals: FC = () => {
       <Modal active={isError} setActive={openError}>
         <Error message={errorMessage} />
       </Modal>
+      {/* <Modal active={false} setActive={() => false}> */}
+      {/*   <EditCard /> */}
+      {/* </Modal> */}
     </>
   );
 };

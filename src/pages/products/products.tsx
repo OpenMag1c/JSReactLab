@@ -1,15 +1,15 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classes from "@/pages/pages.module.scss";
 import Search from "@/components/elements/search/search";
 import { getProducts } from "@/api/api";
 import Spinner from "@/components/elements/spinner/spinner";
 import Block from "@/components/elements/block/block";
-import ProductList from "@/components/productList/productList";
+import ProductList from "@/components/product/list/productList";
 import IProduct from "@/types/IProduct";
 import { IParams, ProductsUrlParams } from "@/types/types";
 import { getParams } from "@/api/utils";
-import ProductFilter from "@/components/productFilter/productFilter";
+import ProductFilter from "@/components/product/filter/productFilter";
 import IFilter from "@/types/IFilter";
 import defaultFilter from "@/constants/defaultFilter";
 
@@ -21,10 +21,13 @@ const Products: FC = () => {
   const [filter, setFilter] = useState<IFilter>(defaultFilter);
   const [params, setParams] = useState<IParams>(getParams(defaultFilter));
 
-  const onSearch = (response: IProduct[] | null): void => {
-    setProducts(response || allProducts);
-    setSpinner(false);
-  };
+  const onSearch = useCallback(
+    (response: IProduct[] | null): void => {
+      setProducts(response || allProducts);
+      setSpinner(false);
+    },
+    [allProducts]
+  );
 
   useEffect(() => {
     (async () => {

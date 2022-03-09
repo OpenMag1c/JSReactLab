@@ -1,13 +1,14 @@
 import React, { FC, Ref, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { IconPen } from "@/components/elements/icons/icons";
-import { inputTextStyles, ProfileParams } from "@/types/types";
+import { inputTextStyles, InputParams } from "@/types/types";
+import MyButton from "@/components/elements/button/myButton";
 
 interface InputTextProps {
   text: string;
   changeText: (data: { [key: string]: string }) => void;
   styles: inputTextStyles;
-  label: ProfileParams;
+  label: InputParams;
 }
 
 export type InputElement = HTMLInputElement | HTMLTextAreaElement;
@@ -37,7 +38,7 @@ const InputText: FC<InputTextProps> = <T extends InputElement>({ text, styles, c
 
   return (
     <>
-      {label === ProfileParams.login ? (
+      {label === InputParams.login ? (
         <input
           ref={inputRef as Ref<HTMLInputElement>}
           value={text}
@@ -56,9 +57,9 @@ const InputText: FC<InputTextProps> = <T extends InputElement>({ text, styles, c
           onBlur={onBlurInput}
         />
       )}
-      <button type="button" className={styles.icon} onClick={onIconCLick}>
+      <MyButton style={styles.icon} onClick={onIconCLick}>
         <IconPen />
-      </button>
+      </MyButton>
     </>
   );
 };

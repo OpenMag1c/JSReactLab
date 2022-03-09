@@ -1,0 +1,45 @@
+.input {
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 20px;
+  height: 30%;
+  width: 50%;
+  max-width: 40px;
+  text-align: center;
+  resize: none;
+  overflow: hidden;
+
+  &:focus {
+    color: $backColor;
+    outline: none;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 35%;
+    border: none;
+    color: $backColor;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: $neonColor;
+    }
+  }
+}
+
+.buttonRemove {
+  position: relative;
+  left: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: $backColor;
+  transform: translate(-50%, 0);
+  padding: 10px;
+
+  &:hover {
+    color: $neonColor;
+  }
+}

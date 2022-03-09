@@ -1,6 +1,11 @@
+export enum Category {
+  PC,
+  PlayStation,
+  XBOX,
+}
+
 export default interface ICategory {
-  name: string;
-  id: string | number;
-  img: string;
+  type: Category;
   title: string;
+  img: string;
 }

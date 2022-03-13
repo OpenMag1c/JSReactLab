@@ -19,4 +19,10 @@ const categories: ICategory[] = [
   },
 ];
 
+export const Categories: { [key in Category]: string } = {
+  [Category.PC]: "PC",
+  [Category.XBOX]: "XBOX",
+  [Category.PlayStation]: "PlayStation",
+};
+
 export default categories;

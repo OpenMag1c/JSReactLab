@@ -3,7 +3,7 @@ export enum Filters {
   Type = "Type",
   Genre = "Genre",
   Age = "Age",
-  Platform = "Platform",
+  Category = "Category",
 }
 
 export enum Age {
@@ -14,7 +14,7 @@ export enum Age {
   Eighteen,
 }
 
-export enum Genres {
+export enum Genre {
   All,
   Shooter,
   RPG,
@@ -45,11 +45,11 @@ export const SortingTypes: { [key in SortingType]: string } = {
   [SortingType.Descending]: "Descending",
 };
 
-export const GenresList: { [key in Genres]: string } = {
-  [Genres.All]: "All",
-  [Genres.Shooter]: "Shooter",
-  [Genres.Arcade]: "Arcade",
-  [Genres.RPG]: "RPG",
+export const Genres: { [key in Genre]: string } = {
+  [Genre.All]: "All",
+  [Genre.Shooter]: "Shooter",
+  [Genre.Arcade]: "Arcade",
+  [Genre.RPG]: "RPG",
 };
 
 export const Ages: { [key in Age]: string } = {

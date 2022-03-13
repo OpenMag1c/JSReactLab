@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import classes from "@/components/navbar/navbar.module.scss";
+import classes from "@/components/header/navbar/navbar.module.scss";
 import { ILink } from "@/environment/pageLinks";
 
 export const checkActive = (props: { isActive: boolean }) =>

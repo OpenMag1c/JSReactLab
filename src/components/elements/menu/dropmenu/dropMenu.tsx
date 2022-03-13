@@ -2,7 +2,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./dropMenu.module.scss";
 import { categoryLinks, ILink } from "@/environment/pageLinks";
-import { checkActive } from "@/components/navbar/navbarItem";
+import { checkActive } from "@/components/header/navbar/navbarItem";
 import { IconDropDown } from "@/components/elements/icons/icons";
 
 interface DropMenuProps {

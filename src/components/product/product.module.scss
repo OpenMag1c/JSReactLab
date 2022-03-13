@@ -57,7 +57,10 @@
 }
 
 .back {
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
   position: absolute;
   transform: rotateY(180deg);
   padding: 10px;
@@ -68,6 +71,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    height: 73px;
   }
 
   &__button {
@@ -90,8 +94,8 @@
   flex-direction: column;
 
   & .product__image {
-    max-width: 250px;
-    min-height: 140px;
+    width: 250px;
+    height: 140px;
     object-fit: cover;
     border-radius: 10px;
   }

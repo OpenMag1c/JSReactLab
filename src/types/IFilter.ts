@@ -1,8 +1,8 @@
-import { Age, Criteria, Filters, Genres, SortingType } from "@/constants/filters";
+import { Age, Criteria, Filters, Genre, SortingType } from "@/constants/filters";
 
 export default interface IFilter {
   [Filters.Criteria]: Criteria;
   [Filters.Type]: SortingType;
-  [Filters.Genre]: Genres;
+  [Filters.Genre]: Genre;
   [Filters.Age]: Age;
 }

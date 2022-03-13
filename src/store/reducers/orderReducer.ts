@@ -1,5 +1,5 @@
-import { IOrderState, OrderAction, OrderActions } from "@/types/reduxOrder";
-import { emptyOrder } from "@/types/orders";
+import { IOrderState, OrderAction, OrderActions } from "@/types/redux/order";
+import { emptyOrder } from "@/constants/defaults";
 
 const defaultState: IOrderState = {
   order: { ...emptyOrder },

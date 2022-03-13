@@ -1,27 +1,23 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FC } from "react";
-import Navbar from "@/components/navbar/navbar";
+import Navbar from "@/components/header/navbar/navbar";
 import classes from "./header.module.scss";
-import ModalButton from "@/components/elements/modalButton/modalButton";
 import { Links } from "@/environment/pageLinks";
 import useActions from "@/hooks/useActions";
 import useTypedSelector from "@/hooks/useProtectedSelector";
-import { IconBasket, IconExit, IconProfile } from "@/components/elements/icons/icons";
-import Money from "@/components/elements/money/money";
-import { amountOfOrder } from "@/api/order";
+import MyButton from "@/components/elements/button/myButton";
+import Authorized from "@/components/header/authorized/authorized";
 
 const Header: FC = () => {
-  const { isAuth, user } = useTypedSelector((state) => state.auth);
-  const { logout, openLogin, openRegister } = useActions();
-  const { order } = useTypedSelector((state) => state.order);
-  const navigate = useNavigate();
+  const { isAuth } = useTypedSelector((state) => state.auth);
+  const { openLogin, openRegister } = useActions();
 
-  const activeStyle = (props: { isActive: boolean }) =>
-    props.isActive ? `${classes.header__link} ${classes.active}` : classes.header__link;
+  const login = () => {
+    openLogin(true);
+  };
 
-  const clickLogout = () => {
-    logout();
-    navigate(Links.home, { replace: true });
+  const register = () => {
+    openRegister(true);
   };
 
   return (
@@ -31,26 +27,15 @@ const Header: FC = () => {
       </Link>
       <Navbar />
       {isAuth ? (
-        <>
-          <NavLink className={activeStyle} to={Links.user}>
-            <IconProfile />
-            {user?.login || "User Name"}
-          </NavLink>
-          <div className={classes.header__money}>
-            <Money money={user?.balance || 0} />
-          </div>
-          <NavLink className={activeStyle} to={Links.order}>
-            <IconBasket />
-            {amountOfOrder(order)}
-          </NavLink>
-          <button type="button" className={classes.header__logout} onClick={clickLogout}>
-            <IconExit />
-          </button>
-        </>
+        <Authorized />
       ) : (
         <>
-          <ModalButton title="Sign In" setIsOpen={openLogin} />
-          <ModalButton title="Sign Up" setIsOpen={openRegister} />
+          <div className={classes.modalButton}>
+            <MyButton text="Sign In" onClick={login} style={classes.modalButton__button} />
+          </div>
+          <div className={classes.modalButton}>
+            <MyButton text="Sign Up" onClick={register} style={classes.modalButton__button} />
+          </div>
         </>
       )}
     </header>

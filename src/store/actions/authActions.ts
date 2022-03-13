@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import IUser from "@/types/IUser";
-import { AuthAction, AuthActions } from "@/types/reduxAuth";
+import { AuthAction, AuthActions } from "@/types/redux/auth";
 
 export const signIn = (user: IUser) => (dispatch: Dispatch<AuthAction>) => {
   dispatch({ type: AuthActions.SIGN_IN, payload: user });

@@ -1,4 +1,4 @@
-import { IOrder, IOrderItem } from "@/types/orders";
+import { IOrder, IOrderItem } from "@/types/IOrder";
 
 export interface IOrderState {
   order: IOrder;

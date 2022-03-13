@@ -6,12 +6,13 @@ import ChangePassword from "@/components/forms/changePassword/changePassword";
 import Error from "@/components/elements/error/error";
 import useActions from "@/hooks/useActions";
 import useTypedSelector from "@/hooks/useProtectedSelector";
+import EditCard from "@/components/forms/editCard/editCard";
+import CreateCard from "@/components/forms/editCard/createCard";
 
 const Modals: FC = () => {
-  const { openError, openPassword, openRegister, openLogin } = useActions();
-  const { isRegisterOpen, isLoginOpen, errorMessage, isError, isPasswordOpen } = useTypedSelector(
-    (state) => state.modal
-  );
+  const { openError, openPassword, openRegister, openLogin, openEditCard, openCreateCard } = useActions();
+  const { isRegisterOpen, isLoginOpen, errorMessage, isError, isPasswordOpen, isEditCard, editCard, isNewCard } =
+    useTypedSelector((state) => state.modal);
 
   return (
     <>
@@ -27,9 +28,12 @@ const Modals: FC = () => {
       <Modal active={isError} setActive={openError}>
         <Error message={errorMessage} />
       </Modal>
-      {/* <Modal active={false} setActive={() => false}> */}
-      {/*   <EditCard /> */}
-      {/* </Modal> */}
+      <Modal active={isEditCard} setActive={openEditCard}>
+        <EditCard editCard={editCard} />
+      </Modal>
+      <Modal active={isNewCard} setActive={openCreateCard}>
+        <CreateCard />
+      </Modal>
     </>
   );
 };

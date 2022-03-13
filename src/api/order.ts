@@ -1,5 +1,7 @@
 import IProduct from "@/types/IProduct";
-import { IOrder, IOrderItem } from "@/types/orders";
+import { IOrder, IOrderItem } from "@/types/IOrder";
+import { Category } from "@/types/ICategory";
+import { Categories } from "@/constants/categories";
 
 export const formatDate = (date: Date): string => {
   let dd = date.getDate().toString();
@@ -20,6 +22,7 @@ export const addOrderItem = (product: IProduct, order: IOrder): IOrder => {
       product,
       date: formatDate(new Date()),
       amount: 1,
+      category: product.category[0],
       price: product.price,
     };
     const newOrder = order;
@@ -56,4 +59,18 @@ export const changeAmount = (amount: number, orderItem: IOrderItem): IOrderItem 
   newOrderItem.amount = amount;
   newOrderItem.price = amount * newOrderItem.product.price;
   return newOrderItem;
+};
+
+export const getCategories = (categories: Category[]): string => {
+  const result: string[] = [];
+  categories.forEach((category) => result.push(Categories[category]));
+  return result.join(" ");
+};
+
+export const toCategoryArray = (categories: Category[]): { [key: string]: string } => {
+  const result: { [key: string]: string } = {};
+  categories.forEach((category) => {
+    result[Categories[category]] = Categories[category];
+  });
+  return result;
 };

@@ -1,4 +1,4 @@
-import { AuthAction, AuthActions, IAuthState } from "@/types/reduxAuth";
+import { AuthAction, AuthActions, IAuthState } from "@/types/redux/auth";
 import IUser, { Role } from "@/types/IUser";
 
 const defaultState: IAuthState = {

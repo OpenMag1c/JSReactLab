@@ -48,3 +48,26 @@ export const changePassword = async (password: string, params: IParams = {}): Pr
   });
   return response.json();
 };
+
+export const addProduct = async (product: IProduct): Promise<boolean> => {
+  const response = await fetch(api.product, {
+    method: "POST",
+    body: JSON.stringify(product),
+  });
+  return response.json();
+};
+
+export const updateProduct = async (product: IProduct): Promise<boolean> => {
+  const response = await fetch(api.product, {
+    method: "PUT",
+    body: JSON.stringify(product),
+  });
+  return response.json();
+};
+
+export const deleteProduct = async (id: number | string): Promise<boolean> => {
+  const response = await fetch(`${api.product}?id=${id}`, {
+    method: "DELETE",
+  });
+  return response.json();
+};

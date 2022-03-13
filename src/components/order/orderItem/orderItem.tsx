@@ -2,13 +2,15 @@ import { FC } from "react";
 import classes from "@/pages/order/order.module.scss";
 import input from "./orderItem.module.scss";
 import MyButton from "@/components/elements/button/myButton";
-import { IOrderItem } from "@/types/orders";
+import { IOrderItem } from "@/types/IOrder";
 import InputText from "@/components/elements/input/inputText/inputText";
-import { InputParams } from "@/types/types";
+import { changeOptions, InputParams } from "@/types/types";
 import useActions from "@/hooks/useActions";
 import Money from "@/components/elements/money/money";
 import { IconTrash } from "@/components/elements/icons/icons";
-import { changeAmount } from "@/api/order";
+import { changeAmount, toCategoryArray } from "@/api/order";
+import PullMenu from "@/components/elements/menu/pullmenu/pullMenu";
+import ProductKeys from "@/constants/options";
 
 interface OrderItemProps {
   orderItem: IOrderItem;
@@ -34,10 +36,22 @@ const OrderItem: FC<OrderItemProps> = ({ orderItem, changeOrder, deleteOrder }) 
     deleteOrder(orderItem);
   };
 
+  const changePlatform: changeOptions = (label, data) => {
+    const key = label.toLowerCase();
+    changeOrder({ ...orderItem, [key]: data });
+  };
+
   return (
     <tr className={classes.row}>
       <td>{game.name}</td>
-      <td>{game.category}</td>
+      <td>
+        <PullMenu
+          label={ProductKeys.Category}
+          items={toCategoryArray(game.category)}
+          change={changePlatform}
+          init={orderItem.category}
+        />
+      </td>
       <td>{orderItem.date}</td>
       <td>
         <InputText

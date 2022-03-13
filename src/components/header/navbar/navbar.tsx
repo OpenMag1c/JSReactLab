@@ -2,7 +2,7 @@ import { FC } from "react";
 import pageLinks, { Links } from "@/environment/pageLinks";
 import classes from "./navbar.module.scss";
 import DropMenu from "@/components/elements/menu/dropmenu/dropMenu";
-import NavbarItem from "@/components/navbar/navbarItem";
+import NavbarItem from "@/components/header/navbar/navbarItem";
 
 const Navbar: FC = () => (
   <nav className={classes.navbar}>

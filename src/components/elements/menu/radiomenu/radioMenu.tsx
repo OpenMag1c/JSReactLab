@@ -4,19 +4,19 @@ import classes from "./radioMenu.module.scss";
 import { getIndex } from "@/api/utils";
 import { MenuFilterProps } from "@/types/types";
 
-const RadioMenu: FC<MenuFilterProps> = ({ items, title, change, init }) => {
+const RadioMenu: FC<MenuFilterProps> = ({ items, label, change, init }) => {
   const [selected, setSelected] = useState<number>(init);
 
   const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const element = event.target.id;
     const index = getIndex(items, element);
     setSelected(index);
-    change(title, index);
+    change(label, index);
   };
 
   return (
     <div className={classes.radios}>
-      <span className={classes.radios__title}>{title}</span>
+      <span className={classes.radios__title}>{label}</span>
       <ul className={classes.radios__inner}>
         {Object.values(items).map((item) => {
           const id = uuid();

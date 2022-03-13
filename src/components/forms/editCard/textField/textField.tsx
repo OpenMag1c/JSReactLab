@@ -1,17 +1,18 @@
-import { FC } from "react";
-import { v4 as uuid } from "uuid";
+import React, { FC, useRef } from "react";
 import classes from "./textField.module.scss";
+import { TextFieldProps } from "@/types/types";
 
-interface TextFieldProps {
-  title: string;
-}
+const TextField: FC<TextFieldProps> = ({ title, changeCard, init = "", type }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
-const TextField: FC<TextFieldProps> = ({ title }) => {
-  const id = uuid();
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    changeCard(title, event.target.value);
+  };
+
   return (
     <div className={classes.field}>
       {title}
-      <input className={classes.field__input} id={id} type="text" />
+      <input ref={inputRef} value={init} className={classes.field__input} type={type} onChange={onInputChange} />
     </div>
   );
 };

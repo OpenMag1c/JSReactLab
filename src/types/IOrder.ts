@@ -1,4 +1,5 @@
 import IProduct from "@/types/IProduct";
+import { Category } from "@/types/ICategory";
 
 export interface IOrder {
   orders: IOrderItem[];
@@ -12,11 +13,5 @@ export interface IOrderItem {
   date: string;
   amount: number;
   price: number;
+  category: Category;
 }
-
-export const emptyOrder: IOrder = {
-  orders: [],
-  price: 0,
-  userId: 0,
-  isPaid: false,
-};

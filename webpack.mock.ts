@@ -1,10 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import webpackMockServer from "webpack-mock-server";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import mockServerHelper from "webpack-mock-server/lib/mockServerHelper";
 import IProduct from "@/types/IProduct";
 import products from "./serverData/products";
 import users from "./serverData/users";
 import userProfiles, { getEmptyProfile } from "./serverData/profiles";
-import { Age, Genres, SortingType } from "@/constants/filters";
+import { Age, Genre, SortingType } from "@/constants/filters";
 import categories from "@/constants/categories";
 import IUser, { Role } from "@/types/IUser";
 
@@ -13,7 +15,7 @@ export default webpackMockServer.add((app, helper) => {
     let productsList = [...products];
     const { sortBy: filter, name: searchName, category: categoryName, amount, genre, age, type } = _req.query;
 
-    if (genre && +genre !== Genres.All) {
+    if (genre && +genre !== Genre.All) {
       productsList = productsList.filter((product) => product.genre === +genre);
     }
 
@@ -144,5 +146,40 @@ export default webpackMockServer.add((app, helper) => {
     } else {
       res.json(false);
     }
+  });
+
+  app.post("/api/product", (req, res) => {
+    const product = JSON.parse(req.body) as IProduct;
+    product.id = mockServerHelper.getUniqueIdInt();
+    product.date = new Date();
+    products.push(product);
+    res.json(product);
+  });
+
+  app.put("/api/product", (req, res) => {
+    const product = JSON.parse(req.body) as IProduct;
+    const newProduct = products.find((item) => item.id === product.id);
+    if (newProduct) {
+      const index = products.indexOf(newProduct);
+      products[index] = { ...product, date: newProduct.date, img: product.img };
+      res.json(newProduct);
+    } else {
+      res.status(400).json();
+    }
+  });
+
+  app.delete("/api/product", (req, res) => {
+    const { id } = req.query;
+    if (id) {
+      const newProduct = products.find((item) => item.id === +id);
+      if (newProduct) {
+        const index = products.indexOf(newProduct);
+        products.splice(index, 1);
+        res.status(200).json(newProduct);
+        return;
+      }
+    }
+
+    res.status(400).json();
   });
 });

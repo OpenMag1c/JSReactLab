@@ -1,21 +1,14 @@
 import React, { FC, useEffect, useRef } from "react";
 import classes from "./pullMenu.module.scss";
-import { Filters } from "@/constants/filters";
+import { MenuFilterProps } from "@/types/types";
 
-interface MenuFilterProps {
-  title: Filters;
-  items: { [key: string]: string };
-  change: (label: Filters, data: number) => void;
-  init: number;
-  styles?: string;
-}
-
-const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init, styles }) => {
+const PullMenu: FC<MenuFilterProps> = (props) => {
+  const { init, title, styles = classes.pullDown__select, label, items, change } = props;
   const selectRef = useRef() as React.MutableRefObject<HTMLSelectElement>;
 
   const changeOption = () => {
     const index = selectRef.current.options.selectedIndex;
-    change(title, index);
+    change(label, index);
   };
 
   useEffect(() => {
@@ -23,11 +16,11 @@ const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init, styles }) =
     if (item) {
       item.selected = true;
     }
-  }, []);
+  }, [init]);
 
   return (
     <form className={classes.pullDown}>
-      {title}
+      {title || null}
       <select ref={selectRef} className={styles} onChange={changeOption}>
         {Object.values(items).map((item) => (
           <option className={classes.pullDown__option} key={item}>
@@ -37,10 +30,6 @@ const PullMenu: FC<MenuFilterProps> = ({ title, items, change, init, styles }) =
       </select>
     </form>
   );
-};
-
-PullMenu.defaultProps = {
-  styles: classes.pullDown__select,
 };
 
 export default PullMenu;

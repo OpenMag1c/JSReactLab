@@ -2,7 +2,7 @@
 import mockServerHelper from "webpack-mock-server/lib/mockServerHelper";
 import { productImages } from "@/constants/images";
 import IProduct from "@/types/IProduct";
-import { Age, Genres } from "@/constants/filters";
+import { Age, Genre } from "@/constants/filters";
 import { Category } from "@/types/ICategory";
 
 const products: IProduct[] = [
@@ -17,7 +17,7 @@ const products: IProduct[] = [
     img: productImages.Horizon,
     date: new Date(2015, 6, 15),
     age: Age.Eighteen,
-    genre: Genres.RPG,
+    genre: Genre.RPG,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -30,7 +30,7 @@ const products: IProduct[] = [
     img: productImages.CounterStrike,
     date: new Date(2018, 8, 21),
     age: Age.Eighteen,
-    genre: Genres.Shooter,
+    genre: Genre.Shooter,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -39,11 +39,11 @@ const products: IProduct[] = [
     category: [Category.PC, Category.PlayStation],
     description:
       "Brawl Stars is a multiplayer online battle arena and third-person hero shooter video game developed and published by the Finnish video game company Supercell. It was released worldwide on December 12, 2018 on iOS and Android. The game features various game modes, each with a different objective.",
-    price: 0,
+    price: 1.99,
     img: productImages.BrawlStars,
     date: new Date(2018, 12, 12),
     age: Age.Sixth,
-    genre: Genres.Arcade,
+    genre: Genre.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -56,7 +56,7 @@ const products: IProduct[] = [
     img: productImages.HalfLifeVr,
     date: new Date(2020, 3, 23),
     age: Age.Eighteen,
-    genre: Genres.Shooter,
+    genre: Genre.All,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -69,7 +69,7 @@ const products: IProduct[] = [
     img: productImages.Skyrim,
     date: new Date(2011, 11, 11),
     age: Age.Eighteen,
-    genre: Genres.RPG,
+    genre: Genre.RPG,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -78,11 +78,11 @@ const products: IProduct[] = [
     category: [Category.PC],
     description:
       'Clash Royale is a tower rush video game which pits players in games featuring two or four players (1v1 or 2v2) in which the objective is to destroy the most opposing towers, with the destruction of the "King\'s Tower" being an instantaneous win.',
-    price: 0,
+    price: 0.5,
     img: productImages.ClashRoyale,
     date: new Date(2016, 6, 3),
     age: Age.Three,
-    genre: Genres.Arcade,
+    genre: Genre.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -95,7 +95,7 @@ const products: IProduct[] = [
     img: productImages.BeatSaber,
     date: new Date(2019, 5, 21),
     age: Age.Twelve,
-    genre: Genres.Arcade,
+    genre: Genre.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -108,7 +108,7 @@ const products: IProduct[] = [
     img: productImages.Terraria,
     date: new Date(2011, 6, 5),
     age: Age.Three,
-    genre: Genres.RPG,
+    genre: Genre.RPG,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -121,7 +121,7 @@ const products: IProduct[] = [
     img: productImages.GenshinImpact,
     date: new Date(2020, 8, 28),
     age: Age.AllAges,
-    genre: Genres.Arcade,
+    genre: Genre.Arcade,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -134,7 +134,7 @@ const products: IProduct[] = [
     img: productImages.ContraCity,
     date: new Date(2010, 10, 25),
     age: Age.Twelve,
-    genre: Genres.Shooter,
+    genre: Genre.Shooter,
   },
   {
     id: mockServerHelper.getUniqueIdInt(),
@@ -147,7 +147,7 @@ const products: IProduct[] = [
     img: productImages.Snake,
     date: new Date(1997, 15, 1),
     age: Age.AllAges,
-    genre: Genres.Arcade,
+    genre: Genre.All,
   },
 ];
 

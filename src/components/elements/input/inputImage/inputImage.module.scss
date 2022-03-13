@@ -24,6 +24,8 @@
   }
 
   &__btn {
-    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
   }
 }

@@ -1,11 +1,11 @@
 import { FC } from "react";
 import classes from "./order.module.scss";
 import useTypedSelector from "@/hooks/useProtectedSelector";
-import OrderItem from "@/components/elements/orderItem/orderItem";
-import { IOrderItem } from "@/types/orders";
+import OrderItem from "@/components/order/orderItem/orderItem";
+import { IOrderItem } from "@/types/IOrder";
 import useActions from "@/hooks/useActions";
 import NoProducts from "@/components/elements/noProducts/noProducts";
-import OrderTable from "@/components/orderTable/orderTable";
+import OrderTable from "@/components/order/orderTable/orderTable";
 
 const Order: FC = () => {
   const { order } = useTypedSelector((state) => state.order);

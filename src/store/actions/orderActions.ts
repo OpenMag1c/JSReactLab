@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
-import { IOrder, IOrderItem } from "@/types/orders";
-import { OrderAction, OrderActions } from "@/types/reduxOrder";
+import { IOrder, IOrderItem } from "@/types/IOrder";
+import { OrderAction, OrderActions } from "@/types/redux/order";
 import { sumOfOrder } from "@/api/order";
 
 export const setOrder = (order: IOrder) => (dispatch: Dispatch<OrderAction>) => {

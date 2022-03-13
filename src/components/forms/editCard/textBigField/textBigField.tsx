@@ -1,17 +1,17 @@
-import { FC } from "react";
-import { v4 as uuid } from "uuid";
+import React, { FC, useRef } from "react";
 import classes from "./textBigField.module.scss";
+import { TextFieldProps } from "@/types/types";
 
-interface TextBigFieldProps {
-  title: string;
-}
+const TextBigField: FC<TextFieldProps> = ({ title, changeCard, init = "" }) => {
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
-const TextBigField: FC<TextBigFieldProps> = ({ title }) => {
-  const id = uuid();
+  const onInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    changeCard(title, event.target.value);
+  };
   return (
     <div className={classes.bigField}>
       {title}
-      <textarea className={classes.bigField__input} id={id} />
+      <textarea ref={inputRef} value={init} className={classes.bigField__input} onChange={onInputChange} />
     </div>
   );
 };

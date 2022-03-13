@@ -16,13 +16,17 @@ interface ProductProps {
 
 const Product: FC<ProductProps> = ({ product }) => {
   const gameCategories: ICategory[] = categories.filter((platform) => product.category.includes(platform.type));
-  const { setOrder } = useActions();
+  const { setOrder, editCard } = useActions();
   const { order } = useTypedSelector((state) => state.order);
   const { isAdmin } = useTypedSelector((state) => state.auth);
 
   const addToOrder = () => {
     const newOrder = addOrderItem(product, order);
     setOrder(newOrder);
+  };
+
+  const edit = () => {
+    editCard(product);
   };
   return (
     <div className={classes.product}>
@@ -44,7 +48,7 @@ const Product: FC<ProductProps> = ({ product }) => {
           <p>{product.description}</p>
           <div className={classes.buttons}>
             <MyButton style={classes.back__button} onClick={addToOrder} text="Add to cart" />
-            {isAdmin ? <MyButton style={classes.back__button} text="Edit" /> : null}
+            {isAdmin ? <MyButton style={classes.back__button} text="Edit" onClick={edit} /> : null}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import classes from "../form.module.scss";
-import InputField from "@/components/elements/inputField/inputField";
+import InputField from "@/components/elements/input/inputField/inputField";
 import { loginValidation, passwordValidation } from "@/components/forms/validation";
 import { authorize } from "@/api/api";
 import IUser from "@/types/IUser";
@@ -24,7 +24,7 @@ const SignIn: FC = () => {
   const onSubmit: SubmitHandler<IUser> = async (data) => {
     const response = await authorize(data);
     if (response) {
-      signIn({ ...data, id: response });
+      signIn(response);
       const state = location.state as { from: Location };
       const page = state?.from?.pathname || "/";
       navigate(page, { replace: true });

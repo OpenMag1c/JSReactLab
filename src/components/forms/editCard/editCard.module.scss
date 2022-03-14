@@ -1,0 +1,41 @@
+.form__inner {
+  display: flex;
+  width: 50vw;
+}
+
+.image {
+  width: 40%;
+
+  &__logo {
+    width: 90%;
+    height: 23%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+}
+
+.information {
+  width: 60%;
+
+  &__fields {
+    margin: 20px 0;
+  }
+}
+
+.pullMenu {
+  cursor: pointer;
+  border-radius: 10px;
+  color: $backColor;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid $backColor;
+  padding: 5px;
+  transition: 0.3s all;
+  width: 73%;
+
+  &:hover,
+  &:focus {
+    border: 1px solid white;
+    outline: none;
+  }
+}

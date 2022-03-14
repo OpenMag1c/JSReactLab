@@ -10,12 +10,12 @@ interface CategoryProps {
 const Category: FC<CategoryProps> = ({ category }) => {
   const navigate = useNavigate();
   const clickHandler = () => {
-    navigate(`/products/${category.name}`);
+    navigate(`/products/${category.title}`);
   };
 
   return (
     <button type="button" className={classes.category} onClick={clickHandler} onKeyDown={clickHandler}>
-      <img src={category.img} alt={category.name} />
+      <img src={category.img} alt={category.title} />
       <p>{category.title}</p>
     </button>
   );

@@ -7,4 +7,5 @@ export default {
   getProfile: "/api/getProfile", // GET params (?id=number)
   saveProfile: "/api/saveProfile", // POST profile (?id=number)
   changePassword: "/api/changePassword", // POST password (?id=number)
+  product: "/api/product", // POST / PUT / DELETE - Add / Update / DELETE {id} product
 };

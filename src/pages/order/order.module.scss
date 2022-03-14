@@ -1,0 +1,45 @@
+.order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__inner {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5%;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 70%;
+    min-height: 55vh;
+  }
+
+  &__table {
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 5%;
+    width: 100%;
+  }
+}
+
+.row {
+  color: #818a91;
+
+  th {
+    font-size: 20px;
+  }
+
+  th,
+  td {
+    width: 16%;
+    height: 50px;
+    border-bottom: 1px solid #00aced;
+    position: relative;
+  }
+}
+
+.foot {
+  color: #818a91;
+  font-weight: bold;
+  font-size: 20px;
+}

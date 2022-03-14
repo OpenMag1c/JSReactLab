@@ -1,16 +1,15 @@
 import "./styles/main.css";
 import "./styles/main.scss";
-import { Component, StrictMode } from "react";
+import { Component, StrictMode, Suspense } from "react";
 import ReactDom from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import Layout from "@/components/layout/layout";
-import Products from "@/pages/products/products";
 import Home from "@/pages/home/home";
-import About from "@/pages/about/about";
 import PrivateRoute from "@/components/privateRoute/privateRoute";
-import UserProfile from "@/pages/userprofile/userProfile";
 import store from "@/store";
+import { AboutPage, OrderPage, ProductsPage, UserProfilePage } from "@/environment/lazyPages";
+import Spinner from "@/components/elements/spinner/spinner";
 
 interface AppProps {
   nothing: boolean;
@@ -46,24 +45,27 @@ class AppContainer extends Component<AppProps, IAppStates> {
       <StrictMode>
         <Provider store={store}>
           <BrowserRouter>
-            {!this.state.hasError ? (
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Home />} />
-                  <Route element={<PrivateRoute />}>
-                    <Route path="products">
-                      <Route path=":category" element={<Products />} />
-                      <Route path="" element={<Products />} />
+            <Suspense fallback={<Spinner />}>
+              {!this.state.hasError ? (
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route element={<PrivateRoute />}>
+                      <Route path="products">
+                        <Route path=":category" element={<ProductsPage />} />
+                        <Route path="" element={<ProductsPage />} />
+                      </Route>
+                      <Route path="about" element={<AboutPage />} />
+                      <Route path="user" element={<UserProfilePage />} />
+                      <Route path="order" element={<OrderPage />} />
                     </Route>
-                    <Route path="about" element={<About />} />
-                    <Route path="user" element={<UserProfile />} />
+                    <Route path=":login" element={<Home />} />
                   </Route>
-                  <Route path=":login" element={<Home />} />
-                </Route>
-              </Routes>
-            ) : (
-              <Home />
-            )}
+                </Routes>
+              ) : (
+                <Home />
+              )}
+            </Suspense>
           </BrowserRouter>
         </Provider>
       </StrictMode>

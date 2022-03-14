@@ -1,0 +1,23 @@
+.bigField {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: $backColor;
+  height: 200px;
+
+  &__input {
+    width: 70%;
+    resize: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid $backColor;
+    color: $backColor;
+
+    &:hover,
+    &:focus {
+      border: 1px solid white;
+    }
+  }
+}

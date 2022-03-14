@@ -1,34 +1,55 @@
 import { FC } from "react";
 import classes from "./product.module.scss";
 import IProduct from "@/types/IProduct";
-import categories from "../../../serverData/categories";
+import categories from "@/constants/categories";
+import MyButton from "@/components/elements/button/myButton";
+import useActions from "@/hooks/useActions";
+import { addOrderItem } from "@/api/order";
+import useTypedSelector from "@/hooks/useProtectedSelector";
+import Money from "@/components/elements/money/money";
+import ICategory from "@/types/ICategory";
+import { IconStar } from "@/components/elements/icons/icons";
 
 interface ProductProps {
   product: IProduct;
 }
 
 const Product: FC<ProductProps> = ({ product }) => {
-  const gameCategory = Object.keys(categories).find((key) => categories[key].id === product.categoryId);
-  const category = gameCategory ? categories[gameCategory] : categories.pc;
+  const gameCategories: ICategory[] = categories.filter((platform) => product.category.includes(platform.type));
+  const { setOrder, editCard } = useActions();
+  const { order } = useTypedSelector((state) => state.order);
+  const { isAdmin } = useTypedSelector((state) => state.auth);
+
+  const addToOrder = () => {
+    const newOrder = addOrderItem(product, order);
+    setOrder(newOrder);
+  };
+
+  const edit = () => {
+    editCard(product);
+  };
   return (
     <div className={classes.product}>
       <div className={classes.product__inner}>
         <div className={classes.front}>
-          <div className={classes.product__category}>
-            {product.rating}/10
-            <img className={classes.product__category__image} src={category.img} alt={category.title} />
+          <div className={classes.category}>
+            <IconStar>{product.rating}/10</IconStar>
+            {gameCategories.map((category) => (
+              <img className={classes.category__image} src={category.img} alt={category.title} key={category.type} />
+            ))}
           </div>
           <img className={classes.product__image} src={product.img} alt={product.name} />
           <div className={classes.title}>
             <p>{product.name}</p>
-            <p>{`${String(product.price)} $`}</p>
+            <Money money={product.price} />
           </div>
         </div>
         <div className={classes.back}>
           <p>{product.description}</p>
-          <button className={classes.back__button} type="submit" onClick={() => alert("Product added")}>
-            Add to cart
-          </button>
+          <div className={classes.buttons}>
+            <MyButton style={classes.back__button} onClick={addToOrder} text="Add to cart" />
+            {isAdmin ? <MyButton style={classes.back__button} text="Edit" onClick={edit} /> : null}
+          </div>
         </div>
       </div>
     </div>

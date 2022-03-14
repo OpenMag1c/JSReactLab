@@ -1,0 +1,14 @@
+.money {
+  display: flex;
+  justify-content: center;
+
+  &__inner {
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    content: "$";
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.5);
+    color: $backColor;
+  }
+}

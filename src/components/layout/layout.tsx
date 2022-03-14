@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
-import Modals from "@/components/elements/modal/modals";
+import Modals from "@/components/modal/modals";
 import { getUser } from "@/api/api";
 import Spinner from "@/components/elements/spinner/spinner";
 import useActions from "@/hooks/useActions";

@@ -2,6 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn {
+    height: 70px;
+  }
 }
 
 .products {

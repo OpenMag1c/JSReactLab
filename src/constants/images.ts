@@ -26,3 +26,5 @@ export const categoryImages: IImages = {
   pcLogo: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/PC_xzabct.png",
   xboxLogo: "https://res.cloudinary.com/dvweto8rq/image/upload/WebAPI/XBOX_xasedy.png",
 };
+
+export const emptyImage = "https://res.cloudinary.com/dvweto8rq/image/upload/v1646913050/WebAPI/placeholder_iqffeh.png";

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import classes from "./productFilter.module.scss";
 import { Ages, CriteriaList, Filters, Genres, SortingTypes } from "@/constants/filters";
-import PullMenu from "@/components/elements/menu/pullmenu/pullMenu";
-import RadioMenu from "@/components/elements/menu/radiomenu/radioMenu";
+import PullMenu from "@/components/elements/menus/pullmenu/pullMenu";
+import RadioMenu from "@/components/elements/menus/radiomenu/radioMenu";
 import IFilter from "@/types/IFilter";
 import { changeOptions } from "@/types/types";
 

@@ -3,7 +3,7 @@ import styles from "../form.module.scss";
 import classes from "./editCard.module.scss";
 import MyButton from "@/components/elements/button/myButton";
 import IProduct from "@/types/IProduct";
-import Fields from "@/components/forms/editCard/fields/fields";
+import Fields from "@/components/forms/card/fields/fields";
 import { changeOptions } from "@/types/types";
 import useActions from "@/hooks/useActions";
 import { emptyCard } from "@/constants/defaults";

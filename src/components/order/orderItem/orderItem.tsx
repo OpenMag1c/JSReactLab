@@ -9,7 +9,7 @@ import useActions from "@/hooks/useActions";
 import Money from "@/components/elements/money/money";
 import { IconTrash } from "@/components/elements/icons/icons";
 import { changeAmount, toCategoryArray } from "@/api/order";
-import PullMenu from "@/components/elements/menu/pullmenu/pullMenu";
+import PullMenu from "@/components/elements/menus/pullmenu/pullMenu";
 import ProductKeys from "@/constants/options";
 
 interface OrderItemProps {

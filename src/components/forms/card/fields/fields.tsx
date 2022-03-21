@@ -1,15 +1,15 @@
 import { FC } from "react";
-import classes from "@/components/forms/editCard/editCard.module.scss";
-import TextField from "@/components/forms/editCard/textField/textField";
-import PullMenu from "@/components/elements/menu/pullmenu/pullMenu";
-import TextBigField from "@/components/forms/editCard/textBigField/textBigField";
-import CheckMenu from "@/components/elements/menu/checkmenu/checkMenu";
+import classes from "@/components/forms/card/editCard.module.scss";
+import TextField from "@/components/forms/card/textField/textField";
+import PullMenu from "@/components/elements/menus/pullmenu/pullMenu";
+import TextBigField from "@/components/forms/card/textBigField/textBigField";
+import CheckMenu from "@/components/elements/menus/checkmenu/checkMenu";
 import IProduct from "@/types/IProduct";
 import { changeOptions } from "@/types/types";
 import { Ages, Genres } from "@/constants/filters";
 import ProductKeys from "@/constants/options";
 import { Categories } from "@/constants/categories";
-import ImageField from "@/components/forms/editCard/imageField/imageField";
+import ImageField from "@/components/forms/card/imageField/imageField";
 
 interface FieldsProps {
   change: changeOptions;

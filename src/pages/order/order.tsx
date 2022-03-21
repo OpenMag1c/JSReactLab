@@ -4,7 +4,7 @@ import useTypedSelector from "@/hooks/useProtectedSelector";
 import OrderItem from "@/components/order/orderItem/orderItem";
 import { IOrderItem } from "@/types/IOrder";
 import useActions from "@/hooks/useActions";
-import NoProducts from "@/components/elements/noProducts/noProducts";
+import EmptyBlock from "@/components/elements/empty/emptyBlock";
 import OrderTable from "@/components/order/orderTable/orderTable";
 
 const Order: FC = () => {
@@ -31,7 +31,7 @@ const Order: FC = () => {
   return (
     <div className={classes.order}>
       {!isEmpty() ? (
-        <NoProducts text={"There's nothing here..."} />
+        <EmptyBlock text={"There's nothing here..."} />
       ) : (
         <div className={classes.order__inner}>
           <OrderTable price={order.price} balance={user?.balance || 0}>

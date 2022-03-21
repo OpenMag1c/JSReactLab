@@ -6,9 +6,9 @@ import IProduct from "@/types/IProduct";
 import { changeOptions } from "@/types/types";
 import useActions from "@/hooks/useActions";
 import { emptyCard } from "@/constants/defaults";
-import Fields from "@/components/forms/editCard/fields/fields";
+import Fields from "@/components/forms/card/fields/fields";
 import Confirmation from "@/components/modal/confirmation/confirmation";
-import validateCard from "@/components/forms/editCard/validateCard";
+import validateCard from "@/components/forms/card/validateCard";
 
 interface EditCardProps {
   editCard: IProduct;

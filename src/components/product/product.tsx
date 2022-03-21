@@ -16,11 +16,16 @@ interface ProductProps {
 
 const Product: FC<ProductProps> = ({ product }) => {
   const gameCategories: ICategory[] = categories.filter((platform) => product.category.includes(platform.type));
-  const { setOrder, editCard } = useActions();
+  const { setOrder, editCard, error } = useActions();
   const { order } = useTypedSelector((state) => state.order);
-  const { isAdmin } = useTypedSelector((state) => state.auth);
+  const { isAdmin, isAuth } = useTypedSelector((state) => state.auth);
 
   const addToOrder = () => {
+    if (!isAuth) {
+      error("You need to be authorised!");
+      return;
+    }
+
     const newOrder = addOrderItem(product, order);
     setOrder(newOrder);
   };

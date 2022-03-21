@@ -6,8 +6,8 @@ import ChangePassword from "@/components/forms/changePassword/changePassword";
 import Error from "@/components/elements/error/error";
 import useActions from "@/hooks/useActions";
 import useTypedSelector from "@/hooks/useProtectedSelector";
-import EditCard from "@/components/forms/editCard/editCard";
-import CreateCard from "@/components/forms/editCard/createCard";
+import EditCard from "@/components/forms/card/editCard";
+import CreateCard from "@/components/forms/card/createCard";
 
 const Modals: FC = () => {
   const { openError, openPassword, openRegister, openLogin, openEditCard, openCreateCard } = useActions();

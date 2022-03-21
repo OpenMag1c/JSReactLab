@@ -25,6 +25,10 @@ const Home: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const createCard = () => {
+    openCreateCard(true);
+  };
+
   const onSearch = useCallback(
     (response: IProduct[] | null): void => {
       setProducts(response || newProducts);
@@ -32,10 +36,6 @@ const Home: FC = () => {
     },
     [newProducts]
   );
-
-  const createCard = () => {
-    openCreateCard(true);
-  };
 
   useEffect(() => {
     (async () => {

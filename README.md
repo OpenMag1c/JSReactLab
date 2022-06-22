@@ -2,7 +2,7 @@
 
 Online marketplace of video games.
 
-## Функционал
+## Functional
 
 - react-router-dom
 - authorization
